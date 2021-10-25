@@ -4,6 +4,7 @@ import Image from 'next/image';
 
 import styles from './Home.module.scss';
 import BackgroundGraphic from '../components/background-graphic/BackgroundGraphic';
+import Navbar from '../components/navbar/Navbar';
 
 const Home: NextPage = () => (
   <div className={styles.container}>
@@ -13,9 +14,8 @@ const Home: NextPage = () => (
       <link rel="icon" href="/favicon.ico" />
     </Head>
 
-    <div>
-      <BackgroundGraphic/>
-    </div>
+    <BackgroundGraphic />
+    <Navbar />
 
     <main className={styles.main}>
       <h1 className={styles.title}>
