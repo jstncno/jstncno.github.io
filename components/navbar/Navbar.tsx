@@ -1,18 +1,19 @@
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
+import { useTheme } from 'next-themes'
 import { MenuIcon, XIcon } from '@heroicons/react/outline'
 import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
-import { useTheme } from '../../hooks';
+// import { useTheme } from '../../hooks';
+
 
 export default function Navbar() {
-  const [theme, setTheme] = useTheme();
+  const {theme, setTheme} = useTheme();
   const [mobileMenuOpen, openMobileMenu] = useState(false);
 
   useEffect(() => console.log({theme}));
 
   function toggle() {
-    const th = theme === 'light' ? 'dark' : 'light';
-    setTheme(th);
+    setTheme(theme === 'light' ? 'dark' : 'light');
   }
 
   return (
