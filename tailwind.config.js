@@ -3,6 +3,16 @@ module.exports = {
   purge: [],
   theme: {
     extend: {
+      fontFamily: {
+        'mono': [
+          'Menlo',
+          'ui-monospace',
+          'SFMono-Regular',
+          'Monaco',
+          'Consolas',
+          'monospace',
+        ],
+      },
       colors: {
         primary: {
           light: '#4B4B4B',
