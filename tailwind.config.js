@@ -4,6 +4,21 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
+        'sans': [
+          '-apple-system',
+          'BlinkMacSystemFont',
+          '"Noto Sans"',
+          'sans-serif',
+          'Arial',
+          'Roboto',
+          '"Segoe UI"',
+          'ui-sans-serif',
+          'system-ui',
+          '"Apple Color Emoji"',
+          '"Noto Color Emoji"',
+          '"Segoe UI Emoji"',
+          '"S"',
+        ],
         'mono': [
           'Menlo',
           'ui-monospace',

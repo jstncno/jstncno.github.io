@@ -1,3 +1,12 @@
+import styles from './styles.module.scss';
+
+export function Hero({children}: {children: string}): JSX.Element {
+  return (
+    <h1 className={styles.hero + " font-mono text-primary dark:text-primary-dark font-bold"}>
+      {children}
+    </h1>
+  );
+}
 
 export function H1({children}: {children: string}): JSX.Element {
   return (
