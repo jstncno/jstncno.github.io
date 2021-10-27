@@ -5,7 +5,6 @@ import Vector from './Vector';
 import { drawTriangles, setGradientMask } from './utils';
 
 const sketch = (sketch: p5) => {
-
   let circles: Circle[];
   let gray: p5.Color;
   let transparent: p5.Color;

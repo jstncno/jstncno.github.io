@@ -17,7 +17,6 @@ module.exports = {
           '"Apple Color Emoji"',
           '"Noto Color Emoji"',
           '"Segoe UI Emoji"',
-          '"S"',
         ],
         'mono': [
           'Menlo',
@@ -45,11 +44,19 @@ module.exports = {
           dark: '#D091FF',
         },
         chip: '#303030',
+        hover: {
+          light: '#1C01B0',
+          DEFAULT: '#1C01B0',
+          dark: '#8C0DE1',
+        },
+        visited: '#FFB400',
       },
     },
   },
   variants: {
-    extend: {},
+    extend: {
+      textColor: ['visited'],
+    }
   },
   plugins: [],
 }
