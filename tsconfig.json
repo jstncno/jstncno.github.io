@@ -15,7 +15,7 @@
     "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
-      "@jstncno/components/*": ["./components/*"],
+      "@jstncno/lib/*": ["./lib/*"],
       "@jstncno/public/*": ["./public/*"]
     }
   },

@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useTheme } from 'next-themes'
 import { MenuIcon, XIcon } from '@heroicons/react/outline'
-import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
 
-import Logo from '@jstncno/components/logo/Logo';
+import Logo from '@jstncno/lib/components/logo/Logo';
+import { SOCIAL_MEDIA } from '@jstncno/lib/constants';
 
 
 export default function Navbar() {
@@ -24,11 +24,11 @@ export default function Navbar() {
             </div>
             <div className="ml-2 flex flex-grow invisible items-center md:visible">
               <div className="ml-10 flex flex-grow items-end space-x-4 justify-end">
-                <a href="#" className="text-primary dark:text-primary-dark hover:text-gray-300 hover:text-white rounded-md text-md font-medium"><FaTwitter /></a>
-
-                <a href="#" className="text-primary dark:text-primary-dark hover:text-gray-300 hover:text-white rounded-md text-md font-medium"><FaGithub /></a>
-
-                <a href="#" className="text-primary dark:text-primary-dark hover:text-gray-300 rounded-md text-md font-medium"><FaLinkedin /></a>
+                {SOCIAL_MEDIA.map(({href, icon}, idx) => (
+                  <a href={href} key={idx} target="_blank" className="text-primary dark:text-primary-dark hover:text-gray-300 hover:text-white rounded-md text-md font-medium">
+                    {React.createElement(icon)}
+                  </a>
+                ))}
                 <button className="invisible md:visible" onClick={toggle}>Toggle Theme</button>
               </div>
             </div>

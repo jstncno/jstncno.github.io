@@ -1,8 +1,8 @@
 import { useRef } from 'react';
 
+import sketch from '@jstncno/lib/sketches/background-polygons/sketch';
+import { useSketch } from '@jstncno/lib/hooks';
 import styles from './BackgroundGraphic.module.scss';
-import sketch from '../../sketches/background-polygons/sketch';
-import { useSketch } from '../../hooks';
 
 export default function BackgroundGraphic() {
   const ref = useRef(null);
