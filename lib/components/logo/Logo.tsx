@@ -8,6 +8,8 @@ export default function Logo(): JSX.Element {
   const {theme} = useTheme();
   const logo = theme === 'dark' ? logoDark : logoLight;
   return (
-    <Image src={logo} alt="jstncno.dev" width={96} height={54} />
+    <a href="/">
+      <Image src={logo} alt="jstncno.dev" width={96} height={54} />
+    </a>
   );
 }
