@@ -30,14 +30,12 @@ export function useWindowSize() {
 export function useSketch(
   s: (sketch: p5) => void,
   ref: MutableRefObject<HTMLElement|null>,
-  postprocess?: (sketch: p5) => void,
 ): p5 | null{
   let sketch = null;
   useEffect(() => {
     if (!ref.current) return;
     const p5js = require('p5');
     sketch = new p5js(s, ref.current);
-    if (postprocess) postprocess(sketch);
   }, [ref]);
   return sketch;
 }
