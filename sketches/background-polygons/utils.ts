@@ -52,9 +52,10 @@ export function setGradient(sketch: p5, x: number, y: number, w: number, h: numb
 
 export function setGradientMask(sketch: p5) {
   const drawingContext = sketch.drawingContext as CanvasRenderingContext2D;
+  if (!drawingContext?.globalCompositeOperation) return
   drawingContext.globalCompositeOperation = "destination-out";
   const gradient = drawingContext.createLinearGradient(0, 0, 0, sketch.height);
-  gradient.addColorStop(0, "rgba(255, 255, 255, 0.9)");
+  gradient.addColorStop(0.0, "rgba(255, 255, 255, 0.9)");
   gradient.addColorStop(0.9, "rgba(255, 255, 255, 1.0)");
   drawingContext.fillStyle = gradient;
   drawingContext.fillRect(0, 0, sketch.width, sketch.height);

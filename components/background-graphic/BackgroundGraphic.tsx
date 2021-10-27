@@ -6,6 +6,7 @@ import { useSketch } from '../../hooks';
 
 export default function BackgroundGraphic() {
   const ref = useRef(null);
+
   useSketch(sketch, ref);
   return <div className={styles.container} ref={ref}></div>;
 }
