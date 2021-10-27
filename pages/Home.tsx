@@ -2,11 +2,11 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
 
-import Footer from '@jstncno/components/footer/Footer';
-import BackgroundGraphic from '../components/background-graphic/BackgroundGraphic';
-import Navbar from '../components/navbar/Navbar';
-import { Chips, Hero, H2, P, PublishDate, TitleLink } from '../components/typography';
-import profilePic from '../public/jstncno-profile.png';
+import Footer from '@jstncno/lib/components/footer/Footer';
+import BackgroundGraphic from '@jstncno/lib/components/background-graphic/BackgroundGraphic';
+import Navbar from '@jstncno/lib/components/navbar/Navbar';
+import { Chips, Hero, H2, P, PublishDate, TitleLink } from '@jstncno/lib/components/typography';
+import profilePic from '@jstncno/public/jstncno-profile.png';
 
 const Home: NextPage = () => (
   <div className="flex flex-col justify-center mt-16 md:mt-32">

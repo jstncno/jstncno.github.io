@@ -59,7 +59,7 @@ export function Chips({tags} : {tags: string[]}): JSX.Element {
   return (
     <div className="flex flex-row">
       {tags.map((tag, idx) => (
-        <div className="bg-chip text-primary-dark px-4 py-1 rounded-3xl my-2 mr-2" key={idx}>
+        <div className="bg-chip text-xs text-primary-dark px-3 py-1 rounded-3xl my-2 mr-2" key={idx}>
           {tag}
         </div>
       ))}
