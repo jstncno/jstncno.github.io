@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 
-import sketch from '@jstncno/lib/sketches/background-polygons/sketch';
+import sketch from '@jstncno/sketches/background-polygons/sketch';
 import { useSketch } from '@jstncno/lib/hooks';
 import styles from './BackgroundGraphic.module.scss';
 
