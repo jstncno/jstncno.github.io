@@ -28,7 +28,7 @@ export default function App({allPosts}: {allPosts: MarkdownPost[]}) {
         <main className="md:col-span-6 lg:col-start-2 lg:col-span-3">
           <section className="mb-16">
             <Hero>DEV BLOG</Hero>
-            <div className="mt-6 md:mt-0 grid grid-cols-3 grid-rows-1 gap-x-4">
+            <div className="items-center mt-6 md:mt-0 grid grid-cols-3 grid-rows-1 gap-x-4">
               <div className="col-start-1 md:hidden">
                 <Image src={profilePic} layout="responsive" />
               </div>

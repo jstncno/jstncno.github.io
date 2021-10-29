@@ -38,7 +38,13 @@ export default function HelloWorld({code, frontmatter}: MarkdownPost) {
 }
 
 export async function getStaticProps({ params }: Params) {
-  const {code, frontmatter} = await getPost(params.pid);
+  const {pid} = params;
+  const {code, frontmatter} = await getPost(pid);
+  if (!frontmatter.published) {
+    return {
+      notFound: true,
+    }
+  }
   return {
     props: {
       code,
