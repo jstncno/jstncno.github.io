@@ -9,7 +9,7 @@ export default function Footer(): JSX.Element {
       <div className="col-span-6 text-center mt-4 md:col-start-2 md:col-span-2 md:text-left md:mt-12 md:row-span-1">
         <Logo />
       </div>
-      <div className="col-span-6 text-center md:col-start-4 md:col-span-2 md:mt-16 md:row-span-2">
+      <div className="col-span-6 text-center md:col-start-4 md:col-span-2 md:mt-16 md:row-span-2 lg:col-start-5 lg:col-span-1">
         <ul>
           <li className="text-primary dark:text-primary-dark mb-2">
             <b>Links</b>
