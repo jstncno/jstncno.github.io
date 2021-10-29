@@ -26,7 +26,7 @@ export function H2({children}: {children: string}): JSX.Element {
   );
 }
 
-export function P({children}: {children: string}): JSX.Element {
+export function P({children}: {children: string | (string | JSX.Element)[]}): JSX.Element {
   return (
     <p className="font-sans text-primary dark:text-primary-dark md:pr-5">
       {children}
@@ -55,12 +55,14 @@ export function PublishDate({date}: {date: Date}): JSX.Element {
   );
 }
 
-export function Chips({tags} : {tags: string[]}): JSX.Element {
+export function Chips({tags}: {tags?: string[]}): JSX.Element {
   return (
     <div className="flex flex-row">
-      {tags.map((tag, idx) => (
+      {tags && !!tags.length && Array.from(new Set(tags)).map((tag, idx) => (
         <div className="bg-chip text-xs text-primary-dark px-3 py-1 rounded-3xl my-2 mr-2" key={idx}>
-          {tag}
+          <NextLink href="#">
+            <a>{tag}</a>
+          </NextLink>
         </div>
       ))}
     </div>

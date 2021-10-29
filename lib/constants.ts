@@ -1,4 +1,7 @@
+import path from 'path';
 import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
+
+export const POSTS_DIR = path.join(process.cwd(), '_posts');
 
 export const SOCIAL_MEDIA = [
   {
