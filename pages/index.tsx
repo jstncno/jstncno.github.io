@@ -5,15 +5,15 @@ import Link from 'next/link';
 
 import BackgroundGraphic from '@jstncno/lib/components/background-graphic/BackgroundGraphic';
 import { getAllPosts, MarkdownPost } from '@jstncno/lib/utils';
-import { Chips, Hero, H2, P, PublishDate, TitleLink } from '@jstncno/lib/components/typography';
+import Chips from '@jstncno/lib/components/chips/Chips';
+import { Hero, H2, P, PublishDate, TitleLink } from '@jstncno/lib/components/typography';
 import profilePic from '@jstncno/public/assets/jstncno-profile.png';
 
 const MAX_RECENT_POSTS = 20;
 const MAX_MOST_POPULAR = 20;
 
 export default function App({allPosts}: {allPosts: MarkdownPost[]}) {
-  const posts = allPosts.filter(post => post.frontmatter.published);
-  const tags = posts.flatMap(post => post.frontmatter.tags ?? []);
+  const tags = allPosts.flatMap(post => post.frontmatter.tags ?? []);
   return (
     <div className="flex flex-col justify-center mt-16 md:mt-26">
       <Head>
@@ -45,12 +45,12 @@ export default function App({allPosts}: {allPosts: MarkdownPost[]}) {
 
           <H2>Recent</H2>
 
-          {posts.slice(0, MAX_RECENT_POSTS).map((post, idx) => (
+          {allPosts.slice(0, MAX_RECENT_POSTS).map((post, idx) => (
             <section className="mt-12 mb-7" key={idx}>
               <TitleLink href={`/blog/${post.pid}`}>
                 {post.frontmatter.title}
               </TitleLink>
-              <PublishDate date={new Date(post.frontmatter.date)} />
+              <PublishDate date={new Date(post.frontmatter.publishDate ?? Date.now())} />
               <P>{post.frontmatter.excerpt}</P>
               <Chips tags={post.frontmatter.tags} />
             </section>
@@ -64,8 +64,8 @@ export default function App({allPosts}: {allPosts: MarkdownPost[]}) {
             </section>
             <section className="row-start-1 lg:row-start-2">
               <H2>Most Popular</H2>
-              <ul className="mx-5 list-disc font-bold font-mono text-primary dark:text-primary-dark hover:underline">
-                {posts.slice(0, MAX_MOST_POPULAR).map((post, idx) => (
+              <ul className="mx-5 mt-2 list-disc font-bold font-mono text-primary dark:text-primary-dark hover:underline">
+                {allPosts.slice(0, MAX_MOST_POPULAR).map((post, idx) => (
                   <li key={idx}>
                     <Link href={`/blog/${post.pid}`}>
                       {post.frontmatter.title}

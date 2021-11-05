@@ -55,7 +55,9 @@ module.exports = {
   },
   variants: {
     extend: {
+      margin: ['first'],
       textColor: ['visited'],
+      display: ['last'],
     }
   },
   plugins: [],
