@@ -1,8 +1,9 @@
+import React from 'react';
 import NextLink from 'next/link';
 
 import styles from './styles.module.scss';
 
-export function Hero({children}: {children: string}): JSX.Element {
+export const Hero: React.FC = ({children}) => {
   return (
     <h1 className={styles.hero + " font-mono text-primary dark:text-primary-dark font-bold leading-tight md:leading-loose mb-3 md:mb-0"}>
       {children}
@@ -10,7 +11,7 @@ export function Hero({children}: {children: string}): JSX.Element {
   );
 }
 
-export function H1({children}: {children: string}): JSX.Element {
+export const H1: React.FC = ({children}) => {
   return (
     <h1 className="font-mono text-primary dark:text-primary-dark text-5xl font-bold">
       {children}
@@ -18,15 +19,15 @@ export function H1({children}: {children: string}): JSX.Element {
   );
 }
 
-export function H2({children}: {children: string}): JSX.Element {
+export const H2: React.FC = ({children}) => {
   return (
-    <h2 className="text-secondary dark:text-secondary-dark text-4xl font-semibold md:my-5 md:mb-3">
+    <h2 className="h2 text-secondary dark:text-secondary-dark text-4xl font-semibold mt-7 mb-3">
       {children}
     </h2>
   );
 }
 
-export function P({children}: {children: string | (string | JSX.Element)[]}): JSX.Element {
+export const P: React.FC = ({children}) => {
   return (
     <p className="font-sans text-primary dark:text-primary-dark md:pr-5">
       {children}
@@ -34,7 +35,7 @@ export function P({children}: {children: string | (string | JSX.Element)[]}): JS
   );
 }
 
-export function TitleLink({children, href}: {children: string, href: string}): JSX.Element {
+export const TitleLink: React.FC<{href: string}> = ({children, href}) => {
   return (
     <NextLink href={href}>
       <a className="hover:underline"><H1>{children}</H1></a>
@@ -42,7 +43,7 @@ export function TitleLink({children, href}: {children: string, href: string}): J
   );
 }
 
-export function PublishDate({date}: {date: Date}): JSX.Element {
+export const PublishDate: React.FC<{date: Date}> = ({date}) => {
   const dateStr = date.toLocaleDateString(undefined, {
     month: 'short',
     day: 'numeric',
@@ -55,21 +56,8 @@ export function PublishDate({date}: {date: Date}): JSX.Element {
   );
 }
 
-export function Chips({tags}: {tags?: string[]}): JSX.Element {
-  return (
-    <div className="flex flex-row">
-      {tags && !!tags.length && Array.from(new Set(tags)).map((tag, idx) => (
-        <div className="bg-chip text-xs text-primary-dark px-3 py-1 rounded-3xl my-2 mr-2" key={idx}>
-          <NextLink href="#">
-            <a>{tag}</a>
-          </NextLink>
-        </div>
-      ))}
-    </div>
-  );
-}
-
-export function Link({children, href, target}: {children: string | JSX.Element, href: string, target?: string}): JSX.Element {
+export const Link: React.FC<{href: string, target?: string}> = (props) => {
+  const {children, href, target} = props;
   const color = 'text-primary dark:text-primary-dark';
   const hover = 'hover:text-secondary dark:hover:text-secondary-dark';
   const active = 'active:text-tertiary dark:active:text-tertiary-dark';

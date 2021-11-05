@@ -22,10 +22,12 @@ export function getPostMarkdown(pid: string): string {
   return fs.readFileSync(filepath, 'utf-8').trim();
 }
 
-export async function getAllPosts(): Promise<MarkdownPost[]> {
-  return Promise.all(getAllPostIds().map(pid => getPost(pid)))
+export async function getAllPosts(publishedOnly = true): Promise<MarkdownPost[]> {
+  const posts = await Promise.all(getAllPostIds().map(pid => getPost(pid)))
     .then(posts => posts.sort((post1, post2) =>
-        post1.frontmatter.date > post2.frontmatter.date ? -1 : 1));
+        post1.frontmatter.publishDate > post2.frontmatter.publishDate ? -1 : 1));
+  if (!publishedOnly) return posts;
+  return posts.filter(post => post.frontmatter.published);
 }
 
 export async function getPost(pid: string): Promise<MarkdownPost> {

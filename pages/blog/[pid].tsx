@@ -3,7 +3,8 @@ import Image from 'next/image';
 import { getMDXComponent } from 'mdx-bundler/client'
 
 import Article from '@jstncno/lib/layouts/Article';
-import { Chips, PublishDate, TitleLink } from '@jstncno/lib/components/typography';
+import Chips from '@jstncno/lib/components/chips/Chips';
+import { H1, H2, Link, P, PublishDate, TitleLink } from '@jstncno/lib/components/typography';
 import { getAllPosts, getPost, MarkdownPost } from '@jstncno/lib/utils';
 
 type Params = {
@@ -12,7 +13,7 @@ type Params = {
   },
 };
 
-export default function HelloWorld({code, frontmatter}: MarkdownPost) {
+const HelloWorld: React.FC<MarkdownPost> = ({code, frontmatter}) => {
   const Component = React.useMemo(() => getMDXComponent(code), [code]);
   return (
     <Article>
@@ -23,7 +24,7 @@ export default function HelloWorld({code, frontmatter}: MarkdownPost) {
             <Image src={frontmatter.author.picture} width={48} height={48} />
           }
           <span className="ml-5">
-            <PublishDate date={new Date(frontmatter.date)} />
+            <PublishDate date={new Date(frontmatter.publishDate)} />
           </span>
         </div>
         <div className="-mt-5 mb-5">
@@ -31,13 +32,19 @@ export default function HelloWorld({code, frontmatter}: MarkdownPost) {
         </div>
       </header>
       <section className="text-primary dark:text-primary-dark">
-        <Component />
+        <Component components={{
+          h1: H1 as React.FC,
+          h2: H2 as React.FC,
+          p: P as React.FC,
+          a: Link as React.FC,
+        }} />
       </section>
     </Article>
   );
 }
+export default HelloWorld;
 
-export async function getStaticProps({ params }: Params) {
+export const getStaticProps = async ({ params }: Params) => {
   const {pid} = params;
   const {code, frontmatter} = await getPost(pid);
   if (!frontmatter.published) {
@@ -53,7 +60,7 @@ export async function getStaticProps({ params }: Params) {
   };
 }
 
-export async function getStaticPaths() {
+export const getStaticPaths = async () => {
   const posts = await getAllPosts();
 
   return {
