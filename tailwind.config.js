@@ -28,6 +28,11 @@ module.exports = {
         ],
       },
       colors: {
+        background: {
+          light: '#FFFFFF',
+          DEFAULT: '#FFFFFF',
+          dark: '#2A0A33',
+        },
         primary: {
           light: '#4B4B4B',
           DEFAULT: '#4B4B4B',
@@ -51,6 +56,13 @@ module.exports = {
         },
         visited: '#FFB400',
       },
+      maxHeight: {
+        '3/5': '60vh',
+        '4/5': '80vh',
+      },
+      maxWidth: {
+        '164px': '164px',
+      },
     },
   },
   variants: {
@@ -58,6 +70,7 @@ module.exports = {
       margin: ['first'],
       textColor: ['visited'],
       display: ['last'],
+      border: ['last'],
     }
   },
   plugins: [],

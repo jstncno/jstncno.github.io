@@ -1,21 +1,39 @@
-import React, { useState } from 'react';
+import React, { KeyboardEventHandler, useEffect, useState } from 'react';
 import { XIcon } from '@heroicons/react/outline'
 
 import Chips from '@jstncno/lib/components/chips/Chips';
 
+import * as styles from './styles';
+
 export interface SearchBarProps {
   allTags: Set<string>;
-  initialTags?: Set<string>;
+  queryParam: string | string[] | undefined;
   onSelectedTagsChange?: (tags: Set<string>) => void;
 }
 
 const SearchBar: React.FC<SearchBarProps> = props => {
-  const { allTags, initialTags, onSelectedTagsChange } = props;
-  const all = Array.from(allTags ?? []);
-  const initial = Array.from(initialTags ?? []);
-  const [availableTags, setAvailableTags] = useState<string[]>(all);
-  const [selectedTags, setSelectedTags] = useState<string[]>(initial);
+  const { allTags, queryParam, onSelectedTagsChange } = props;
+  const [query, setQuery] = useState<string>("");
+  const [displayQuery, setDisplayQuery] = useState<string>("");
+  const [hoveredTag, setHoveredTag] = useState<string|null>(null);
+  const [dropdownHidden, setDropdownHidden] = useState<boolean>(true);
+  const [availableTags, setAvailableTags] = useState<string[]>([]);
+  const [selectedTags, setSelectedTags] = useState<string[]>([]);
 
+  useEffect(() => {
+    const initialTags = queryParam instanceof Array ? queryParam :
+        decodeURIComponent(queryParam ?? '').split(',')
+            .filter((t): t is string => !!t);
+    const initialTagSet = new Set(initialTags);
+    const all = Array.from(allTags ?? []);
+    setAvailableTags(all);
+    const initial = Array.from(initialTagSet ?? []);
+    setSelectedTags(initial);
+    onSelectedTagsChange && onSelectedTagsChange(new Set(initial));
+  }, [queryParam]);
+
+  const filteredTags = availableTags.filter(tag => query ?
+    tag.toLocaleLowerCase().includes(query.toLocaleLowerCase()) : !!tag);
 
   const selectTag = (tag: string) => {
     const selected = selectedTags.concat(tag);
@@ -33,11 +51,67 @@ const SearchBar: React.FC<SearchBarProps> = props => {
     onSelectedTagsChange && onSelectedTagsChange(new Set(selected));
   }
 
+  const onChange = ({ target }: React.ChangeEvent<HTMLInputElement>)=> {
+    const { value } = target;
+    setQuery(value);
+    setDisplayQuery(value);
+  }
+
+  const onKeyDown = ({ key }: React.KeyboardEvent)=> {
+    switch (key) {
+      case 'ArrowUp':
+        let prev;
+        if (!hoveredTag) {
+          prev = filteredTags[filteredTags.length-1];
+        } else {
+          const i = Math.max(0, filteredTags.indexOf(hoveredTag) - 1);
+          prev = filteredTags[i];
+        }
+        if (prev) {
+          setHoveredTag(prev);
+          setDisplayQuery(prev);
+        }
+        break;
+      case 'ArrowDown':
+        let next;
+        if (!hoveredTag) {
+          next = filteredTags[0];
+        } else {
+          const i = Math.min(filteredTags.indexOf(hoveredTag) + 1,
+          filteredTags.length);
+          next = filteredTags[i];
+        }
+        if (next) {
+          setHoveredTag(next);
+          setDisplayQuery(next);
+        }
+        break;
+      case 'Enter':
+        const q = hoveredTag ?? query;
+        const tag = availableTags.find(t =>
+            t.toLocaleLowerCase() === q.toLocaleLowerCase());
+        if (tag) selectTag(tag);
+        break;
+      default:
+        break;
+    }
+  };
+
+  const onFocus = () => setDropdownHidden(false);
+  const onBlur = () => setDropdownHidden(true);
+
+  const hoverTag = (tag: string): boolean => {
+    return tag.toLocaleLowerCase() == hoveredTag?.toLocaleLowerCase();
+  }
+
   return (
     <div className="border-2 border-gray-300 px-3 py-2 rounded-lg relative mx-auto mt-7 text-gray-600 w-full md:w-auto">
       <label htmlFor="flex search-input width-full">
-        <input className="bg-transparent text-primary dark:text-primary-dark h-10 pl-7 text-sm rounded-lg focus:outline-none"
-          id="search-input" type="search" name="search" placeholder="Search" />
+        <input className="bg-transparent text-primary dark:text-primary-dark h-10 pl-7 text-sm rounded-lg focus:outline-none w-full"
+          id="search-input" type="search" name="search" placeholder="Search"
+          value={displayQuery ?? ""}
+          onChange={onChange} onFocus={onFocus} onBlur={onBlur}
+          onKeyDown={onKeyDown} />
         <button type="submit" className="absolute left-0 top-0 mt-5 mx-4">
           <svg className="text-gray-600 h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg"
             version="1.1" id="Capa_1" x="0px" y="0px"
@@ -48,6 +122,19 @@ const SearchBar: React.FC<SearchBarProps> = props => {
           </svg>
         </button>
       </label>
+
+      <div className="autocomplete relative w-full">
+        <div className={`dropdown ${styles.dropdown(dropdownHidden || filteredTags.length === 0)}`}>
+          <ul>
+            {filteredTags.map(tag => (
+              <li className={styles.dropdownListItem(hoverTag(tag))} key={`dropdown-${tag}`} onClick={() => selectTag(tag)}
+              onMouseEnter={() => setHoveredTag(tag)}
+              onMouseLeave={() => setHoveredTag(null)} >
+                {tag}
+              </li>))}
+          </ul>
+        </div>
+      </div>
 
       {selectedTags.length ?
         <Chips tags={selectedTags} href="#" onClick={deselectTag} iconRight={XIcon} /> :

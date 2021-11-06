@@ -5,7 +5,7 @@ import styles from './styles.module.scss';
 
 export const Hero: React.FC = ({children}) => {
   return (
-    <h1 className={styles.hero + " font-mono text-primary dark:text-primary-dark font-bold leading-tight md:leading-loose mb-3 md:mb-0"}>
+    <h1 className={styles.hero + " font-mono text-primary dark:text-primary-dark font-bold leading-tight xl:leading-loose mb-3 md:mb-0"}>
       {children}
     </h1>
   );
