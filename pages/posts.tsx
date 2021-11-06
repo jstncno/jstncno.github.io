@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { GetStaticPropsContext } from 'next'
 import { useRouter } from 'next/router';
 
@@ -19,11 +19,6 @@ const Posts: React.FC<PostsProps> = ({ publishedPosts }) => {
   const router = useRouter();
   const { tags } = router.query;
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
-  const queriedTags: Set<string> | undefined = new Set(tags instanceof Array ?
-      tags :
-      decodeURIComponent(tags ?? '').split(',').filter((t): t is string => !!t)
-  );
-
 
   const allTags = publishedPosts.flatMap(post => post.frontmatter.tags ?? []);
   const availableTags = new Set(allTags.filter(tag => !selectedTags.includes(tag)));
@@ -37,15 +32,14 @@ const Posts: React.FC<PostsProps> = ({ publishedPosts }) => {
         intersects(selectedTags, post.frontmatter.tags ?? []))
         .slice(0, MAX_POSTS_PER_PAGE);
 
-  const onSelectedTagsChange = (tags: Set<string>) => {
-    setSelectedTags(Array.from(tags))
-  }
+  const onSelectedTagsChange = (tags: Set<string>) =>
+    setSelectedTags(Array.from(tags));
 
   return (
     <Article>
       <H1>Browse by tag</H1>
 
-      <SearchBar allTags={availableTags} initialTags={queriedTags}
+      <SearchBar allTags={availableTags} queryParam={tags}
         onSelectedTagsChange={onSelectedTagsChange} />
 
       <H2>Posts</H2>
@@ -58,7 +52,7 @@ const Posts: React.FC<PostsProps> = ({ publishedPosts }) => {
             </TitleLink>
             <PublishDate date={new Date(post.frontmatter.publishDate ?? Date.now())} />
             <P>{post.frontmatter.excerpt}</P>
-            <Chips tags={post.frontmatter.tags} />
+            <Chips tags={post.frontmatter.tags} href="#" />
             <hr className="mt-3 last:hidden" />
           </section>
         ))}
