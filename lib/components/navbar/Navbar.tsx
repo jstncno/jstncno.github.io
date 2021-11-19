@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
-import { useTheme } from 'next-themes'
+import React, { Fragment, useState } from 'react';
+import { Menu, Transition } from '@headlessui/react'
 import { MenuIcon, XIcon } from '@heroicons/react/outline'
+import { useTheme } from 'next-themes'
 
 import Logo from '@jstncno/lib/components/logo/Logo';
 import { SOCIAL_MEDIA } from '@jstncno/lib/constants';
@@ -32,17 +33,40 @@ export default function Navbar() {
                 <button className="invisible md:visible" onClick={toggle}>Toggle Theme</button>
               </div>
             </div>
-            <div className="flex md:invisible">
+            <div className="flex md:invisible rounded-md m-2 p-2">
               <button onClick={toggle}>Toggle Theme</button>
               {/* Mobile menu button */}
-              <button type="button" className="bg-transparent inline-flex items-center justify-center p-2 rounded-md text-primary dark:text-primary-dark focus:outline-none" aria-controls="mobile-menu" aria-expanded="false">
-                <span className="sr-only">Open main menu</span>
-                {mobileMenuOpen ? (
-                  <XIcon className="block h-6 w-6" aria-hidden="true" onClick={() => openMobileMenu(false)} />
-                ) : (
-                  <MenuIcon className="block h-6 w-6" aria-hidden="true" onClick={() => openMobileMenu(true)} />
-                )}
-              </button>
+              <Menu as="div" className="relative inline-block text-left">
+                <Menu.Button className="bg-transparent rounded-md m-2 p-2 inline-flex items-center justify-center text-primary dark:text-primary-dark hover:bg-background-light dark:hover:bg-background-dark focus:outline-none">
+                  <span className="sr-only">Open menu</span>
+                  {/* <MenuIcon className="h-6 w-6" aria-hidden="true" /> */}
+                  {mobileMenuOpen ? (
+                    <XIcon className="block h-6 w-6" aria-hidden="true" onClick={() => openMobileMenu(false)} />
+                  ) : (
+                    <MenuIcon className="block h-6 w-6" aria-hidden="true" onClick={() => openMobileMenu(true)} />
+                  )}
+                </Menu.Button>
+                <Transition
+                  enter="transition duration-100 ease-out"
+                  enterFrom="transform scale-95 opacity-0"
+                  enterTo="transform scale-100 opacity-100"
+                  leave="transition duration-75 ease-out"
+                  leaveFrom="transform scale-100 opacity-100"
+                  leaveTo="transform scale-95 opacity-0">
+                  <Menu.Items className="absolute right-0 w-56 mt-2 z-10 p-2 bg-background-light dark:bg-background-dark rounded-md">
+                    {SOCIAL_MEDIA.map(({href, icon, name}, idx) => (
+                      <Menu.Item key={idx}>
+                        <a href={href} target="_blank" className="text-primary flex dark:text-primary-dark hover:text-gray-500 dark:hover:text-gray-400 rounded-md text-md font-medium">
+                          <span className="ml-1.5 my-auto">
+                            {React.createElement(icon)}
+                          </span>
+                          <span className="mx-2 my-1">{name}</span>
+                        </a>
+                      </Menu.Item>
+                    ))}
+                  </Menu.Items>
+                </Transition>
+              </Menu>
             </div>
           </div>
         </div>
