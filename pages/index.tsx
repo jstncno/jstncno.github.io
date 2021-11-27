@@ -57,7 +57,7 @@ export default function App({allPosts}: {allPosts: MarkdownPost[]}) {
           ))}
         </main>
 
-        <aside className="md:col-span-6 lg:col-start-5 lg:col-span-2">
+        <aside className="md:col-span-6 lg:col-start-5 lg:col-span-1">
           <div className="grid grid-rows-3">
             <section className="hidden lg:block row-start-1 w-2/3 text-center lg:text-left">
               <Image src={profilePic} width={196} height={196} />

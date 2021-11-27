@@ -17,8 +17,8 @@ export default function Navbar() {
 
   return (
     <nav className="bg-transparent w-screen absolute top-0 left-0">
-      <div className="grid grid-cols-navbar-layout max-w-full mx-auto px-4 py-4 sm:px-6 lg:px-8">
-        <div className="flex col-start-2 col-span-1 items-center justify-between h-16">
+      <div className="grid grid-cols-1 md:grid-cols-6 gap-4 p-4 max-w-full mx-auto px-4 py-4 sm:px-6 lg:px-8">
+        <div className="flex col-start-2 col-span-1 md:col-end-6 items-center justify-between h-16">
           <div className="flex flex-grow items-center">
             <div className="flex-shrink-0 -mr-2">
               <Logo />

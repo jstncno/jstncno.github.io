@@ -58,7 +58,7 @@ module.exports = {
       },
       gridTemplateColumns: {
         'article-layout': '1fr min(65ch, 100%) 1fr',
-        'navbar-layout': '1fr min(80ch, 100%) 1fr',
+        'navbar-layout': '1fr min(100ch, 100%) 1fr',
       },
       maxHeight: {
         '3/5': '60vh',
