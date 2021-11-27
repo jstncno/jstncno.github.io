@@ -3,30 +3,6 @@ module.exports = {
   purge: [],
   theme: {
     extend: {
-      fontFamily: {
-        'sans': [
-          '-apple-system',
-          'BlinkMacSystemFont',
-          '"Noto Sans"',
-          'sans-serif',
-          'Arial',
-          'Roboto',
-          '"Segoe UI"',
-          'ui-sans-serif',
-          'system-ui',
-          '"Apple Color Emoji"',
-          '"Noto Color Emoji"',
-          '"Segoe UI Emoji"',
-        ],
-        'mono': [
-          'Menlo',
-          'ui-monospace',
-          'SFMono-Regular',
-          'Monaco',
-          'Consolas',
-          'monospace',
-        ],
-      },
       colors: {
         background: {
           light: '#FFFFFF',
@@ -55,6 +31,34 @@ module.exports = {
           dark: '#8C0DE1',
         },
         visited: '#FFB400',
+      },
+      fontFamily: {
+        'sans': [
+          '-apple-system',
+          'BlinkMacSystemFont',
+          '"Noto Sans"',
+          'sans-serif',
+          'Arial',
+          'Roboto',
+          '"Segoe UI"',
+          'ui-sans-serif',
+          'system-ui',
+          '"Apple Color Emoji"',
+          '"Noto Color Emoji"',
+          '"Segoe UI Emoji"',
+        ],
+        'mono': [
+          'Menlo',
+          'ui-monospace',
+          'SFMono-Regular',
+          'Monaco',
+          'Consolas',
+          'monospace',
+        ],
+      },
+      gridTemplateColumns: {
+        'article-layout': '1fr min(65ch, 100%) 1fr',
+        'navbar-layout': '1fr min(80ch, 100%) 1fr',
       },
       maxHeight: {
         '3/5': '60vh',

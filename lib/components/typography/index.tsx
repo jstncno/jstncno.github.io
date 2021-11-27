@@ -29,7 +29,7 @@ export const H2: React.FC = ({children}) => {
 
 export const P: React.FC = ({children}) => {
   return (
-    <p className="font-sans text-primary dark:text-primary-dark md:pr-5">
+    <p className="font-sans mb-5 text-primary dark:text-primary-dark md:pr-5">
       {children}
     </p>
   );
