@@ -1,6 +1,9 @@
 module.exports = {
+  content: [
+    "./pages/**/*.{js,ts,jsx,tsx}",
+    "./lib/**/*.{js,ts,jsx,tsx}",
+  ],
   darkMode: 'class',
-  purge: [],
   theme: {
     extend: {
       colors: {
@@ -24,7 +27,11 @@ module.exports = {
           DEFAULT: '#2800FF',
           dark: '#D091FF',
         },
-        chip: '#303030',
+        chip: {
+          light: '#404040',
+          DEFAULT: '#303030',
+          dark: '#202020',
+        },
         hover: {
           light: '#1C01B0',
           DEFAULT: '#1C01B0',
