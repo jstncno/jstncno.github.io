@@ -8,9 +8,13 @@ export interface ThemeToggleProps {
 
 export default function ThemeToggle({theme, onThemeChanged}: ThemeToggleProps) {
   const [lightThemeEnabled, setLightTheme] = useState(true);
+  const [sunIcon, setSunIcon] = useState('visible');
+  const [moonIcon, setMoonIcon] = useState('visible');
 
   useEffect(() => {
     setLightTheme(theme === 'light');
+    setSunIcon(theme === 'light' ? 'visible' : 'invisible');
+    setMoonIcon(theme === 'dark' ? 'visible' : 'invisible');
   }, [theme])
 
   function toggle() {
@@ -19,7 +23,7 @@ export default function ThemeToggle({theme, onThemeChanged}: ThemeToggleProps) {
     onThemeChanged && onThemeChanged(newTheme);
   }
 
-  const iconClass = 'text-base ml-1';
+  const iconClass = 'text-[12px] m-auto';
 
   return (
     <div className="flex">
@@ -27,12 +31,12 @@ export default function ThemeToggle({theme, onThemeChanged}: ThemeToggleProps) {
         checked={lightThemeEnabled}
         onChange={toggle}
         className={`${
-          lightThemeEnabled ? 'bg-primary' : 'bg-chip'
+          lightThemeEnabled ? 'bg-chip-light' : 'bg-chip'
         } relative inline-flex items-center h-6 rounded-full w-11`}>
         <span className="sr-only">Toggle Theme</span>
-        <div className="absolute">
-          <span className={iconClass}>☀️</span>
-          <span className={iconClass}>🌙</span>
+        <div className="absolute flex w-full">
+          <div className={`${sunIcon} ${iconClass}`}>☀️</div>
+          <div className={`${moonIcon} ${iconClass}`}>🌙</div>
         </div>
         <span
           className={`${

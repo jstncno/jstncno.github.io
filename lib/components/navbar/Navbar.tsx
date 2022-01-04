@@ -12,10 +12,6 @@ export default function Navbar() {
   const {theme, setTheme} = useTheme();
   const [mobileMenuOpen, openMobileMenu] = useState(false);
 
-  function toggle() {
-    setTheme(theme === 'light' ? 'dark' : 'light');
-  }
-
   return (
     <nav className="bg-transparent w-screen absolute top-0 left-0">
       <div className="grid grid-cols-1 md:grid-cols-6 gap-4 p-4 max-w-full mx-auto px-4 py-4 sm:px-6 lg:px-8">
@@ -31,7 +27,9 @@ export default function Navbar() {
                     {React.createElement(icon)}
                   </a>
                 ))}
-                <ThemeToggle theme={theme ?? 'light'} onThemeChanged={setTheme} />
+                <span className="hidden md:inline">
+                  <ThemeToggle theme={theme ?? 'light'} onThemeChanged={setTheme} />
+                </span>
               </div>
             </div>
             <div className="flex items-center md:hidden rounded-md m-2 p-2">
