@@ -62,7 +62,8 @@ export default function App({allPosts}: {allPosts: MarkdownPost[]}) {
             <section className="hidden lg:block row-start-1 w-2/3 text-center lg:text-left">
               <Image src={profilePic} width={196} height={196} />
             </section>
-            <section className="row-start-1 lg:row-start-2">
+            {/* TODO (jstncno): Determine "popularity" metric */}
+            {/* <section className="row-start-1 lg:row-start-2">
               <H2>Most Popular</H2>
               <ul className="mx-5 mt-2 list-disc font-bold font-mono text-primary dark:text-primary-dark hover:underline">
                 {allPosts.slice(0, MAX_MOST_POPULAR).map((post, idx) => (
@@ -72,8 +73,8 @@ export default function App({allPosts}: {allPosts: MarkdownPost[]}) {
                     </Link>
                   </li>))}
               </ul>
-            </section>
-            <section className="row-start-2 lg:row-start-3">
+            </section> */}
+            <section>
               <H2>By Category</H2>
               <Chips tags={tags} />
             </section>
