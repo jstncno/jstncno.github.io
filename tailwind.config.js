@@ -28,7 +28,7 @@ module.exports = {
           dark: '#D091FF',
         },
         chip: {
-          light: '#404040',
+          light: '#c3c3c3',
           DEFAULT: '#303030',
           dark: '#202020',
         },

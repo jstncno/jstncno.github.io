@@ -30,7 +30,7 @@ export default function App({allPosts}: {allPosts: MarkdownPost[]}) {
             <Hero>DEV BLOG</Hero>
             <div className="items-center mt-6 md:mt-0 grid grid-cols-3 grid-rows-1 gap-x-4">
               <div className="col-start-1 max-w-164px lg:hidden">
-                <Image src={profilePic} layout="responsive" />
+                <Image src={profilePic} priority layout="responsive" />
               </div>
               <div className="text-sm col-start-2 col-end-6 lg:col-start-1 lg:text-base">
                 <P>

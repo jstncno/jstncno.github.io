@@ -30,7 +30,7 @@ const SearchBar: React.FC<SearchBarProps> = props => {
     const initial = Array.from(initialTagSet ?? []);
     setSelectedTags(initial);
     onSelectedTagsChange && onSelectedTagsChange(new Set(initial));
-  }, [queryParam]);
+  }, []);
 
   const filteredTags = availableTags.filter(tag => query ?
     tag.toLocaleLowerCase().includes(query.toLocaleLowerCase()) : !!tag);

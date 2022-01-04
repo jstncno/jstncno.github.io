@@ -1,9 +1,10 @@
-import React, { Fragment, useState } from 'react';
-import { Menu, Transition } from '@headlessui/react'
+import React, { useState } from 'react';
+import { Menu, Switch, Transition } from '@headlessui/react'
 import { MenuIcon, XIcon } from '@heroicons/react/outline'
 import { useTheme } from 'next-themes'
 
 import Logo from '@jstncno/lib/components/logo/Logo';
+import ThemeToggle from '@jstncno/lib/components/theme-toggle/ThemeToggle';
 import { SOCIAL_MEDIA } from '@jstncno/lib/constants';
 
 
@@ -18,7 +19,7 @@ export default function Navbar() {
   return (
     <nav className="bg-transparent w-screen absolute top-0 left-0">
       <div className="grid grid-cols-1 md:grid-cols-6 gap-4 p-4 max-w-full mx-auto px-4 py-4 sm:px-6 lg:px-8">
-        <div className="flex col-start-2 col-span-1 md:col-end-6 items-center justify-between h-16">
+        <div className="flex col-start-1 col-span-1 md:col-span-6 lg:col-start-2 lg:col-end-6 items-center justify-between h-16">
           <div className="flex flex-grow items-center">
             <div className="flex-shrink-0 -mr-2">
               <Logo />
@@ -26,15 +27,15 @@ export default function Navbar() {
             <div className="ml-2 flex flex-grow invisible md:visible items-center">
               <div className="ml-10 flex flex-grow items-end space-x-4 justify-end">
                 {SOCIAL_MEDIA.map(({href, icon}, idx) => (
-                  <a href={href} key={idx} target="_blank" className="text-primary dark:text-primary-dark hover:text-gray-300 hover:text-white rounded-md text-md font-medium">
+                  <a href={href} key={idx} target="_blank" className="text-primary dark:text-primary-dark hover:text-gray-300 hover:text-white rounded-md text-md font-medium mb-[4px]">
                     {React.createElement(icon)}
                   </a>
                 ))}
-                <button className="invisible md:visible" onClick={toggle}>Toggle Theme</button>
+                <ThemeToggle theme={theme ?? 'light'} onThemeChanged={setTheme} />
               </div>
             </div>
-            <div className="flex md:hidden rounded-md m-2 p-2">
-              <button onClick={toggle}>Toggle Theme</button>
+            <div className="flex items-center md:hidden rounded-md m-2 p-2">
+              <ThemeToggle theme={theme ?? 'light'} onThemeChanged={setTheme} />
               {/* Mobile menu button */}
               <Menu as="div" className="relative inline-block text-left">
                 <Menu.Button className="bg-transparent rounded-md m-2 p-2 inline-flex items-center justify-center text-primary dark:text-primary-dark hover:bg-background-light dark:hover:bg-background-dark focus:outline-none">
