@@ -33,6 +33,8 @@ async function main() {
     return;
   }
 
+  console.log(`Publishing: ${pid}`);
+
   const md = getPostMarkdown(pid);
   const bundle = await bundleMDX(md);
 
@@ -47,18 +49,25 @@ async function main() {
   fs.writeFileSync(filepath, frontmatter + bundle.matter.content);
 
   const commitMsg = commitMessage(pid);
-  const command = 'git';
-  const args = ['commit', filepath, '-m', commitMsg];
+  runCommand('git', ['commit', filepath, '-m', commitMsg]);
+  console.log(`Committed file: ${filepath}`);
+
+  console.log('Pushing to origin...');
+  runCommand('git', ['push', 'origin']);
+  console.log('Done 🎉`');
+}
+
+function runCommand(command: string, args: string[]) {
   const debugMsg = [command, ...args].join(' ');
-  const out = spawnSync('git', ['commit', filepath, '-m', commitMsg]);
+  const out = spawnSync(command, args);
   if (out.status == null) {
     console.error(`Error running command:\n\t${debugMsg}`);
-    return;
+    process.exit(1);
   } else if (out.status > 0) {
     console.log(out.stdout.toString('utf-8'));
     console.log(out.stderr.toString('utf-8'));
     console.error(`Error running command:\n\t${debugMsg}`);
-    return;
+    process.exit(1);
   }
 }
 
