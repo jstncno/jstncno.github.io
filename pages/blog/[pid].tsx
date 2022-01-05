@@ -13,7 +13,7 @@ type Params = {
   },
 };
 
-const HelloWorld: React.FC<MarkdownPost> = ({code, frontmatter}) => {
+const BlogPost: React.FC<MarkdownPost> = ({code, frontmatter}) => {
   const Component = React.useMemo(() => getMDXComponent(code), [code]);
   return (
     <Article>
@@ -42,7 +42,7 @@ const HelloWorld: React.FC<MarkdownPost> = ({code, frontmatter}) => {
     </Article>
   );
 }
-export default HelloWorld;
+export default BlogPost;
 
 export const getStaticProps = async ({ params }: Params) => {
   const {pid} = params;

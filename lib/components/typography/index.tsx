@@ -65,7 +65,7 @@ export const Link: React.FC<{href: string, target?: string}> = (props) => {
   const cls = [color, hover, active, visited, 'underline'].join(' ');
   return (
     <a href={href}
-      target={target ?? "_self"}
+      target={target ?? "_blank"}
       className={cls}>
       {children}
     </a>
