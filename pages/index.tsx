@@ -6,7 +6,7 @@ import Link from 'next/link';
 import BackgroundGraphic from '@jstncno/lib/components/background-graphic/BackgroundGraphic';
 import { getAllPosts, MarkdownPost } from '@jstncno/lib/utils';
 import Chips from '@jstncno/lib/components/chips/Chips';
-import { Hero, H2, P, PublishDate, TitleLink } from '@jstncno/lib/components/typography';
+import { Hero, H2, P, PublishDate, TitleLink, Code } from '@jstncno/lib/components/typography';
 import profilePic from '@jstncno/public/assets/jstncno-profile.png';
 
 const MAX_RECENT_POSTS = 20;
@@ -36,7 +36,7 @@ export default function App({allPosts}: {allPosts: MarkdownPost[]}) {
                 <P>
                   Hi there! My name is Justin and I enjoy building things for the
                   web. This is my developer playground, where I experiment with
-                  {' '}<code className="bg-gray-300 dark:bg-gray-500 rounded px-1">code</code>{' '}
+                  {' '}<Code>code</Code>{' '}
                   and blog about my experiences.
                 </P>
               </div>

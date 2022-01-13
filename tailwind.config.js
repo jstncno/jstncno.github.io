@@ -9,6 +9,7 @@ module.exports = {
       colors: {
         background: {
           light: '#FFFFFF',
+          lightCode: '#EFEFEF',
           DEFAULT: '#FFFFFF',
           dark: '#2A0A33',
         },
@@ -36,6 +37,11 @@ module.exports = {
           light: '#1C01B0',
           DEFAULT: '#1C01B0',
           dark: '#8C0DE1',
+        },
+        'code-background': {
+          light: '#EFEFEF',
+          DEFAULT: '#4B4B4B',
+          dark: '#252525',
         },
         visited: '#FFB400',
       },

@@ -13,7 +13,7 @@ export default function Navbar() {
   const [mobileMenuOpen, openMobileMenu] = useState(false);
 
   return (
-    <nav className="bg-transparent w-screen absolute top-0 left-0">
+    <nav className="transparent w-screen absolute top-0 left-0">
       <div className="grid grid-cols-1 md:grid-cols-6 gap-4 p-4 max-w-full mx-auto px-4 py-4 sm:px-6 lg:px-8">
         <div className="flex col-start-1 col-span-1 md:col-span-6 lg:col-start-2 lg:col-end-6 items-center justify-between h-16">
           <div className="flex flex-grow items-center">

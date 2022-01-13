@@ -71,3 +71,18 @@ export const Link: React.FC<{href: string, target?: string}> = (props) => {
     </a>
   );
 }
+
+export const Pre: React.FC = props => {
+  return (
+    <pre className="rounded-md bg-code-background-light dark:bg-code-background-dark p-5" {...props} />
+  );
+}
+
+export const Code: React.FC = ({children, ...props}) => {
+  return (
+    <code className="font-mono text-primary dark:text-primary-dark bg-code-background-light dark:bg-code-background-dark rounded-md mb-3 md:mb-0 p-1" {...props}>
+      {children}
+    </code>
+  );
+}
+
