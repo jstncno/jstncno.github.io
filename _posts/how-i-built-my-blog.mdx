@@ -1,0 +1,127 @@
+---
+title: How I Built my Blog
+excerpt: >-
+  An peek into the technical stack behind this blog.
+published: false
+publishDate: '2022-01-11T07:10:40.413Z'
+author:
+  name: Justin Cano
+  picture: /assets/jstncno-profile.png
+tags:
+  - Blog
+  - TypeScript
+  - React
+  - Next.js
+  - Markdown/MDX
+---
+
+## Intro
+
+This is the first “technical” post of my blog, and I think it seems fitting for it to be about how I built it.
+
+## The Stack
+
+There are a ton of tooling options to choose from when creating a new software project. Knowing which tools to actually use depends very much on what your goals are.
+
+I came up with **three** goals when building this blog:
+
+1. Write articles using Markdown
+
+    I really enjoy writing in Markdown, especially when writing technical content. Out of the box, Markdown allows authors to write expressive with little overhead. What that means for me is I can just use backticks (```) to easily format code.
+
+    I can also keep all these articles stored in the repo itself, and not have to deal with an external CMS. There are some pros and cons to this, but seeing as this is still a very small personal blog, I think I can manage all my posts manually (for now...).
+
+2. Add custom functionality to Markdown posts
+
+    Being a frontend developer, I enjoy creating fun, interactive content with JavaScript. Not sure what those will be yet, but I want the flexibility to play with my strengths here. Plus, I think it will make my blog a bit more engaging.
+
+3. Learn a new technology
+
+    This is actually huge reason why I continue to develop software, even as hobby - I love learning and working with new technologies. It helps keep me on my toes. During my day job, we usually don’t have the room to explore the latest new and shiny piece of tech - we typically stick to what we know.
+
+    This is great from a business perspective, since the technologies in our stack are backed by large communities and have so far stood the test of time. This gets pretty boring on a personal level, though, and continuing doing so runs a risk of my current skillset becoming stale. So, learning a new technology helps keep me stay on top of the industry trends.
+
+
+With these goals in mind, I set out to piece my tech stack together. Here’s what I came up with .
+
+### Next.js
+
+*This* is the ***new and shiny*** piece of tech that I’ve had my eye on for a while. With the rise in popularity of server-side rendering (SSR), [Next.js](https://nextjs.org/) [stands out in popularity](https://2020.stateofjs.com/en-US/technologies/back-end-frameworks/) among the rest. Most my blog will likely be static content anyways, so I figured it’d be a good excuse - err , *use-case* - to experiment and play with.
+
+### MDX
+
+Before I discovered Next.js, I actually first looked up [Jekyll](https://jekyllrb.com/) as the framework for which to build my site, because I remembered it featuring a way to turn Markdown files into static HTML. I’m not a Ruby developer, though, and I wanted to stay in my lane for this one.
+
+It didn’t take me long to find [Josh Comeau’s](https://twitter.com/JoshWComeau/) article on [how he built his blog](https://www.joshwcomeau.com/blog/how-i-built-my-blog/), where he explained his use of Next.js and how MDX is his *secret ingredient*.
+
+[MDX](https://mdxjs.com/) extends Markdown by allowing us to embed React code within it. So, this:
+
+```bash
+# I'm an H1!
+
+## I'm an H2!
+
+This is a paragraph.
+
+import HelloGradient from './lib/components/hello-gradient';
+
+<HelloGradient />
+```
+
+<br />
+
+Turns into this:
+
+<br />
+
+# I’m an H1!
+
+## I’m an H2!
+
+This is a paragraph.
+
+import HelloGradient from './lib/components/hello-gradient';
+
+<HelloGradient />
+
+(shoutout to [@pokecoder](https://twitter.com/pokecoder) for the [CSS tip!](https://twitter.com/pokecoder/status/1466582413476200449))
+
+<br />
+
+In his blog, Josh describes a few libraries for using MDX with Next.js, and mentions he would be using [Kent C. Dodds’](https://kentcdodds.com/) [mdx-bundler](https://github.com/kentcdodds/mdx-bundler) moving forward. It seems like a pretty popular library, so I took the liberty to use it as well.
+
+### Tailwind CSS
+
+Yet another shiny new framework that’s been generating a lot of hype. I usually use [styled-components](https://styled-components.com/) when developing React apps, but I still wanted to scratch that *“lets learn something new and trendy”* itch.
+
+Tailwind CSS poses an interesting new way of dealing with managing your CSS properties. After working with it for the blog, I realized it doesn’t really fit my use case. Tailwind is built to scale design systems.
+
+My blog is trying to do the opposite - I want the flexibility to customize every component I create. It’s not going to scale to a team of any size, so it will probably never take full advantage of Tailwind’s full feature set, but it was fun to tinker with.
+
+Tailwind did come in handy when structuring the layout of my pages, especially when it came to making it responsive and mobile-friendly. I also found myself taking advantage of Tailwind’s configuration to manage color themes and other properties that are intended to be used throughout the entire app.
+
+I use [next-themes](https://github.com/pacocoursey/next-themes) to detect the user’s current them preference and Tailwind to detect and apply the appropriate color theme. One limiting thing about Tailwind is that it looks like it only supports two themes - a `light` mode and a `dark` mode.
+
+I’ve always thought about creating more themes (more than just `light` and `dark`) for the blog as a creative outlet. When that time comes, I might switch over to a different CSS framework to better manage multiple themes.
+
+### Styled Components
+
+I’ve configured Tailwind to extend more class styles, but I figured it’d be limiting in the future if I wanted to fully customize my styles. At first, I used [modular SCSS](https://github.com/css-modules/css-modules) since it came with Next.js out of the box, but ran into troubles when trying to use it with mdx-bundler.
+
+Apparently, I’m not the only one - I found [a](https://github.com/kentcdodds/mdx-bundler/issues/101) [few](https://github.com/kentcdodds/mdx-bundler/issues/53) [other](https://www.gbasil.dev/blog/mdx-w-scss) [developers](https://amitd.co/colophon) who’ve had the same experience.
+
+So, I ended up choosing [styled-components](https://styled-components.com/) and will be using it going forward for the rest of this blog. Styled-components are great because, as its name suggests, I can easily apply custom styles to my components, which means I can create custom components for blog posts that may need it.
+
+### Vercel
+
+The stack started with Next.js, so it seems appropriate that it ends with [Vercel](https://vercel.com/). The two names are practically analogous to each other - Next.js is developed by Vercel, and Vercel is a Platform-as-a-Service (PaaS) focused on the developer experience.
+
+Vercel makes it super easy to deploy Next.js apps on their platform. It’s just a couple of clicks to sign up and connect your GitHub repo, and a few more steps to configure your domain. From there, every new commit to your `main` branch is automatically deployed. I haven’t tried any other frameworks (like Angular or Vue), but I’m sure the experience is the same.
+
+## Using MDX to Render Blog Posts
+
+## Future
+
+Since the [launch of my blog](https://www.notion.so/blog-hello-world-3d29bc43e2c44762a64fef3662f13b37), I’m determined on making it an **active** project of mine, meaning I intend to develop more features in the future. I can already foresee what features to include, and some of them may be worth writing a blog post about, so stay tuned for more updates!
+
+Thanks for reading!

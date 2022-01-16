@@ -27,6 +27,14 @@ export const H2: React.FC = ({children}) => {
   );
 }
 
+export const H3: React.FC = ({children}) => {
+  return (
+    <h3 className="h3 text-tertiary dark:text-tertiary-dark text-xl font-bold mt-7 mb-3">
+      {children}
+    </h3>
+  );
+}
+
 export const P: React.FC = ({children}) => {
   return (
     <p className="font-sans mb-5 text-primary dark:text-primary-dark md:pr-5">

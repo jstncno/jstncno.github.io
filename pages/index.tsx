@@ -1,7 +1,6 @@
 import { GetStaticPropsContext } from 'next'
 import Head from 'next/head';
 import Image from 'next/image';
-import Link from 'next/link';
 
 import BackgroundGraphic from '@jstncno/lib/components/background-graphic/BackgroundGraphic';
 import { getAllPosts, MarkdownPost } from '@jstncno/lib/utils';

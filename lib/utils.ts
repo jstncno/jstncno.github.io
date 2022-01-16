@@ -48,6 +48,13 @@ export async function getAllPosts(publishedOnly = true): Promise<MarkdownPost[]>
 
 export async function getPost(pid: string): Promise<MarkdownPost> {
   const md = getPostMarkdown(pid);
-  const {code, frontmatter} = await bundleMDX(md, {cwd: process.cwd()});
+  const {code, frontmatter} = await bundleMDX(md, {
+    cwd: process.cwd(),
+    esbuildOptions: options => ({
+      ...options,
+      target: 'es2020',
+      platform: 'node',
+    }),
+  });
   return {pid, code, frontmatter};
 }
