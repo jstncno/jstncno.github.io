@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import { getMDXComponent } from 'mdx-bundler/client'
+import { getMDXComponent } from 'mdx-bundler/client';
 
 import Article from '@jstncno/lib/layouts/Article';
 import Chips from '@jstncno/lib/components/chips/Chips';
@@ -61,7 +61,7 @@ export const getStaticProps = async ({ params }: Params) => {
       frontmatter,
     },
   };
-}
+};
 
 export const getStaticPaths = async () => {
   const posts = await getAllPosts();
@@ -76,4 +76,4 @@ export const getStaticPaths = async () => {
     }),
     fallback: false,
   }
-}
+};

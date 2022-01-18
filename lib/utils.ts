@@ -5,10 +5,10 @@ import { bundleMDX } from 'mdx-bundler';
 
 import { POSTS_DIR } from './constants';
 
-export type MarkdownPost = {
+export interface MarkdownPost {
   pid: string;
-  code: string,
-  frontmatter: {[key: string]: any},
+  code: string;
+  frontmatter: {[key: string]: any};
 };
 
 export function walkdir(dir: string): string[] {
@@ -39,9 +39,10 @@ export function getPostMarkdown(pid: string): string {
 }
 
 export async function getAllPosts(publishedOnly = true): Promise<MarkdownPost[]> {
-  const posts = await Promise.all(getAllPostIds().map(pid => getPost(pid)))
-    .then(posts => posts.sort((post1, post2) =>
-        post1.frontmatter.publishDate > post2.frontmatter.publishDate ? -1 : 1));
+  const posts = await Promise.all(getAllPostIds().map(pid => getPost(pid)));
+  // Sorted by most recent first
+  posts.sort((post1, post2) =>
+      post1.frontmatter.publishDate > post2.frontmatter.publishDate ? -1 : 1);
   if (!publishedOnly) return posts;
   return posts.filter(post => post.frontmatter.published);
 }
