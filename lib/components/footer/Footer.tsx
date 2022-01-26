@@ -24,7 +24,7 @@ export default function Footer(): JSX.Element {
         </ul>
       </div>
       <div className="col-span-6 text-primary dark:text-primary-dark text-center text-sm mt-16 mb-8 md:row-start-2 md:col-start-2 md:text-left md:col-span-2 md:row-span-1">
-        © 2021-present Justin Cano. All Rights Reserved.
+        © 2022-present Justin Cano. All Rights Reserved.
       </div>
     </div>
   );

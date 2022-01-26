@@ -1,4 +1,6 @@
+import '../styles/prism-tomorrow.min.css';
 import '../styles/globals.css';
+
 import type { AppProps } from 'next/app';
 
 import AppShell from '@jstncno/lib/layouts/AppShell';

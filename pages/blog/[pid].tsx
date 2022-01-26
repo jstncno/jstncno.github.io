@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Image from 'next/image';
 import { getMDXComponent } from 'mdx-bundler/client';
 
 import Article from '@jstncno/lib/layouts/Article';
 import Chips from '@jstncno/lib/components/chips/Chips';
-import { Code, H1, H2, H3, Link, P, Pre, PublishDate, TitleLink } from '@jstncno/lib/components/typography';
+import { Callout, Code, H1, H2, H3, Link, P, Pre, PublishDate, TitleLink } from '@jstncno/lib/components/typography';
 import { getAllPosts, getPost, MarkdownPost } from '@jstncno/lib/utils';
+import Head from 'next/head';
 
 type Params = {
   params: {
@@ -14,9 +15,17 @@ type Params = {
 };
 
 const BlogPost: React.FC<MarkdownPost> = ({code, frontmatter}) => {
+
   const Component = React.useMemo(() => getMDXComponent(code), [code]);
   return (
     <Article>
+
+      <Head>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.26.0/prism.min.js" integrity="sha512-pSVqGtpGygQlhN8ZTHXx1kqkjQr30eM+S6OoSzhHGTjh6DKdfy7WZlo1DNO9bhtM0Imf6xNLznZ7iVC2YUMwJQ==" crossOrigin="anonymous" referrerPolicy="no-referrer"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.26.0/components/prism-core.min.js" integrity="sha512-NC2WFBzw/SdbWrzG0C+sg3iv1OITcQKsUitDcYKfOp9vxe92zpNlRc5Ad3q81kAp8Ff/fDV8pZQxdCCeyFdgLw==" crossOrigin="anonymous" referrerPolicy="no-referrer"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.26.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-GP4x8UWxWyh4BMbyJGOGneiTbkrWEF5izsVJByzVLodP8CuJH/n936+yQDMJJrOPUHLgyPbLiGw2rXmdvGdXHA==" crossOrigin="anonymous" referrerPolicy="no-referrer"></script>
+      </Head>
+
       <header>
         <TitleLink href="#">{frontmatter.title}</TitleLink>
         <div className="flex my-7">
@@ -40,6 +49,7 @@ const BlogPost: React.FC<MarkdownPost> = ({code, frontmatter}) => {
           a: Link as React.FC,
           pre: Pre as React.FC,
           code: Code as React.FC,
+          blockquote: Callout as React.FC,
         }} />
       </section>
     </Article>

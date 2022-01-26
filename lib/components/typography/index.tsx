@@ -2,6 +2,7 @@ import React from 'react';
 import NextLink from 'next/link';
 
 import styles from './styles.module.scss';
+import Callout from './Callout';
 
 export const Hero: React.FC = ({children}) => {
   return (
@@ -82,15 +83,16 @@ export const Link: React.FC<{href: string, target?: string}> = (props) => {
 
 export const Pre: React.FC = props => {
   return (
-    <pre className="rounded-md bg-code-background-light dark:bg-code-background-dark p-5" {...props} />
+    <pre className="rounded-md bg-code-background-light dark:bg-code-background-dark p-5 overflow-x-auto" {...props} />
   );
 }
 
 export const Code: React.FC = ({children, ...props}) => {
   return (
-    <code className="font-mono text-primary dark:text-primary-dark bg-code-background-light dark:bg-code-background-dark rounded-md mb-3 md:mb-0 p-1" {...props}>
+    <code className="font-mono text-primary dark:text-primary-dark bg-code-background-light dark:bg-code-background-dark rounded-md mb-3 md:mb-0 p-1 overflow-x-auto" {...props}>
       {children}
     </code>
   );
 }
 
+export {Callout};

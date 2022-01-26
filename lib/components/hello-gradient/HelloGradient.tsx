@@ -14,9 +14,6 @@ const H1 = styled.h1`
   -webkit-background-clip: text;
 `;
 
-
-export interface HelloGradientProps {}
-
 export default function HelloGradient() {
   return <H1>hello!</H1>;
 }
