@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Image from 'next/image';
 import { getMDXComponent } from 'mdx-bundler/client';
 
 import Article from '@jstncno/lib/layouts/Article';
 import Chips from '@jstncno/lib/components/chips/Chips';
-import { Callout, Code, H1, H2, H3, Link, ListItem, OrderedList, P, Pre, PublishDate, UnorderedList, TitleLink } from '@jstncno/lib/components/typography';
+import { Callout, Code, H1, H2, H3, Link, ListItem, OrderedList, P, Pre, PublishDate, UnorderedList, TitleLink, HorizontalRule } from '@jstncno/lib/components/typography';
 import { getAllPosts, getPost, MarkdownPost } from '@jstncno/lib/utils';
 import Head from 'next/head';
 
@@ -14,8 +14,7 @@ type Params = {
   },
 };
 
-const BlogPost: React.FC<MarkdownPost> = ({code, frontmatter}) => {
-
+export default function BlogPost({code, frontmatter}: MarkdownPost) {
   const Component = React.useMemo(() => getMDXComponent(code), [code]);
   return (
     <Article>
@@ -53,12 +52,12 @@ const BlogPost: React.FC<MarkdownPost> = ({code, frontmatter}) => {
           ol: OrderedList as React.FC,
           ul: UnorderedList as React.FC,
           li: ListItem as React.FC,
+          hr: HorizontalRule as React.FC,
         }} />
       </section>
     </Article>
   );
 }
-export default BlogPost;
 
 export const getStaticProps = async ({ params }: Params) => {
   const {pid} = params;

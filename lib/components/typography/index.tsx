@@ -3,6 +3,7 @@ import NextLink from 'next/link';
 
 import styles from './styles.module.scss';
 import Callout from './Callout';
+import HorizontalRule from './HorizontalRule';
 
 export const Hero: React.FC = ({children}) => {
   return (
@@ -10,7 +11,7 @@ export const Hero: React.FC = ({children}) => {
       {children}
     </h1>
   );
-}
+};
 
 export const H1: React.FC = ({children}) => {
   return (
@@ -18,7 +19,7 @@ export const H1: React.FC = ({children}) => {
       {children}
     </h1>
   );
-}
+};
 
 export const H2: React.FC = ({children}) => {
   return (
@@ -26,7 +27,7 @@ export const H2: React.FC = ({children}) => {
       {children}
     </h2>
   );
-}
+};
 
 export const H3: React.FC = ({children}) => {
   return (
@@ -34,7 +35,7 @@ export const H3: React.FC = ({children}) => {
       {children}
     </h3>
   );
-}
+};
 
 export const P: React.FC = ({children}) => {
   return (
@@ -42,7 +43,7 @@ export const P: React.FC = ({children}) => {
       {children}
     </p>
   );
-}
+};
 
 export const TitleLink: React.FC<{href: string}> = ({children, href}) => {
   return (
@@ -50,7 +51,7 @@ export const TitleLink: React.FC<{href: string}> = ({children, href}) => {
       <a className="hover:underline"><H1>{children}</H1></a>
     </NextLink>
   );
-}
+};
 
 export const PublishDate: React.FC<{date: Date}> = ({date}) => {
   const dateStr = date.toLocaleDateString(undefined, {
@@ -63,7 +64,7 @@ export const PublishDate: React.FC<{date: Date}> = ({date}) => {
       {dateStr}
     </h3>
   );
-}
+};
 
 export const Link: React.FC<{href: string, target?: string}> = (props) => {
   const {children, href, target} = props;
@@ -79,13 +80,13 @@ export const Link: React.FC<{href: string, target?: string}> = (props) => {
       {children}
     </a>
   );
-}
+};
 
 export const Pre: React.FC = props => {
   return (
     <pre className="rounded-md bg-code-background-light dark:bg-code-background-dark p-5 overflow-x-auto" {...props} />
   );
-}
+};
 
 export const Code: React.FC = ({children, ...props}) => {
   return (
@@ -93,7 +94,7 @@ export const Code: React.FC = ({children, ...props}) => {
       {children}
     </code>
   );
-}
+};
 
 export const OrderedList: React.FC = ({children, ...props}) => {
   return (
@@ -101,7 +102,7 @@ export const OrderedList: React.FC = ({children, ...props}) => {
       {children}
     </ol>
   );
-}
+};
 
 export const UnorderedList: React.FC = ({children, ...props}) => {
   return (
@@ -109,7 +110,7 @@ export const UnorderedList: React.FC = ({children, ...props}) => {
       {children}
     </ol>
   );
-}
+};
 
 export const ListItem: React.FC = ({children, ...props}) => {
   return (
@@ -117,6 +118,6 @@ export const ListItem: React.FC = ({children, ...props}) => {
       {children}
     </li>
   );
-}
+};
 
-export {Callout};
+export {Callout, HorizontalRule};
