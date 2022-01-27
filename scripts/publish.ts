@@ -36,7 +36,14 @@ async function main() {
   console.log(`Publishing: ${pid}`);
 
   const md = getPostMarkdown(pid);
-  const bundle = await bundleMDX(md);
+  const bundle = await bundleMDX(md, {
+    cwd: process.cwd(),
+    esbuildOptions: options => ({
+      ...options,
+      target: 'es2020',
+      platform: 'node',
+    }),
+  });
 
   if (bundle.frontmatter.published) {
     console.warn('Post already published.')
