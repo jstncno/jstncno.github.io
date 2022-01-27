@@ -20,9 +20,11 @@ export default function BlogPost({code, frontmatter}: MarkdownPost) {
     <Article>
 
       <Head>
+        <title>JSTNCNO Dev Blog{frontmatter.title ? ` - ${frontmatter.title}` : ''}</title>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.26.0/prism.min.js" integrity="sha512-pSVqGtpGygQlhN8ZTHXx1kqkjQr30eM+S6OoSzhHGTjh6DKdfy7WZlo1DNO9bhtM0Imf6xNLznZ7iVC2YUMwJQ==" crossOrigin="anonymous" referrerPolicy="no-referrer"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.26.0/components/prism-core.min.js" integrity="sha512-NC2WFBzw/SdbWrzG0C+sg3iv1OITcQKsUitDcYKfOp9vxe92zpNlRc5Ad3q81kAp8Ff/fDV8pZQxdCCeyFdgLw==" crossOrigin="anonymous" referrerPolicy="no-referrer"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.26.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-GP4x8UWxWyh4BMbyJGOGneiTbkrWEF5izsVJByzVLodP8CuJH/n936+yQDMJJrOPUHLgyPbLiGw2rXmdvGdXHA==" crossOrigin="anonymous" referrerPolicy="no-referrer"></script>
+        <meta name="description" content={frontmatter.excerpt} />
       </Head>
 
       <header>

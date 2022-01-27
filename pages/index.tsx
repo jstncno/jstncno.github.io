@@ -16,8 +16,8 @@ export default function App({allPosts}: {allPosts: MarkdownPost[]}) {
   return (
     <div className="flex flex-col justify-center mt-16 md:mt-26">
       <Head>
-        <title>JSTNCNO</title>
-        <meta name="description" content="Justin Cano's Dev Blog" />
+        <title>JSTNCNO Dev Blog</title>
+        <meta name="description" content="Justin Cano's Software Development Blog" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 

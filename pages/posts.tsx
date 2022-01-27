@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { GetStaticPropsContext } from 'next'
 import { useRouter } from 'next/router';
+import Head from 'next/head';
 
 import Article from '@jstncno/lib/layouts/Article';
 import { getAllPosts, MarkdownPost } from '@jstncno/lib/utils';
@@ -37,6 +38,12 @@ const Posts: React.FC<PostsProps> = ({ publishedPosts }) => {
 
   return (
     <Article>
+      <Head>
+        <title>JSTNCNO Dev Blog</title>
+        <meta name="description" content="Browse by Tag" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
       <H1>Browse by tag</H1>
 
       <SearchBar allTags={availableTags} queryParam={tags}
