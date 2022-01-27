@@ -95,4 +95,28 @@ export const Code: React.FC = ({children, ...props}) => {
   );
 }
 
+export const OrderedList: React.FC = ({children, ...props}) => {
+  return (
+    <ol className="list-decimal ml-8" {...props}>
+      {children}
+    </ol>
+  );
+}
+
+export const UnorderedList: React.FC = ({children, ...props}) => {
+  return (
+    <ol className="list-disc ml-8" {...props}>
+      {children}
+    </ol>
+  );
+}
+
+export const ListItem: React.FC = ({children, ...props}) => {
+  return (
+    <li className="last:mb-4" {...props}>
+      {children}
+    </li>
+  );
+}
+
 export {Callout};

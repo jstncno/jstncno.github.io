@@ -4,7 +4,7 @@ import { getMDXComponent } from 'mdx-bundler/client';
 
 import Article from '@jstncno/lib/layouts/Article';
 import Chips from '@jstncno/lib/components/chips/Chips';
-import { Callout, Code, H1, H2, H3, Link, P, Pre, PublishDate, TitleLink } from '@jstncno/lib/components/typography';
+import { Callout, Code, H1, H2, H3, Link, ListItem, OrderedList, P, Pre, PublishDate, UnorderedList, TitleLink } from '@jstncno/lib/components/typography';
 import { getAllPosts, getPost, MarkdownPost } from '@jstncno/lib/utils';
 import Head from 'next/head';
 
@@ -50,6 +50,9 @@ const BlogPost: React.FC<MarkdownPost> = ({code, frontmatter}) => {
           pre: Pre as React.FC,
           code: Code as React.FC,
           blockquote: Callout as React.FC,
+          ol: OrderedList as React.FC,
+          ul: UnorderedList as React.FC,
+          li: ListItem as React.FC,
         }} />
       </section>
     </Article>
