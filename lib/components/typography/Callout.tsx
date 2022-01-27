@@ -78,7 +78,7 @@ function iconForCalloutType(callout?: CalloutType): JSX.Element {
 function parseCalloutType(msg?: string): {callout: CalloutType, message: string} | undefined {
   if (!msg) return;
 
-  const trimmed = msg.trim();
+  const trimmed = msg.trimStart();
 
   if (trimmed.startsWith(CalloutType.INFO)) {
     const message = clean(trimmed.slice(CalloutType.INFO.length));
@@ -90,7 +90,7 @@ function parseCalloutType(msg?: string): {callout: CalloutType, message: string}
 }
 
 function clean(message: string): string {
-  const msg = message.trim();
+  const msg = message.trimStart();
   const result = msg.startsWith(':') ? msg.slice(1) : msg;
-  return result.trim();
+  return result.trimStart();
 }
