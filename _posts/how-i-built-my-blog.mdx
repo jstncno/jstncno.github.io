@@ -15,48 +15,100 @@ tags:
   - Markdown/MDX
 ---
 
+import HelloGradient from './lib/components/hello-gradient';
+import HorizontalRule from './lib/components/typography/HorizontalRule';
+
 ## Intro
 
-This is the first “technical” post of my blog, and I think it seems fitting for it to be about how I built it.
+This is the first “technical” post of my blog, and I think it seems fitting for
+it to be about how I built it.
+
+> INFO: This blog is open-sourced! See the
+> [GitHub repo](https://github.com/jstncno/jstncno.github.io) 🧑🏽‍💻
 
 ## The Stack
 
-There are a ton of tooling options to choose from when creating a new software project. Knowing which tools to actually use depends very much on what your goals are.
+There are a ton of tooling options to choose from when creating a new software
+project. Knowing which tools to actually use depends very much on what your
+goals are.
 
 I came up with **three** goals when building this blog:
 
-1. Write articles using Markdown
+1. **Write articles using Markdown**
 
-    I really enjoy writing in Markdown, especially when writing technical content. Out of the box, Markdown allows authors to write expressive with little overhead. What that means for me is I can just use backticks (```) to easily format code.
+    -  I really enjoy writing in Markdown, especially when writing technical
+       content. Out of the box, Markdown allows authors to write expressive with
+       little overhead. What that means for me is I can just use backticks
+       (`` ` ``) to easily format code.
 
-    I can also keep all these articles stored in the repo itself, and not have to deal with an external CMS. There are some pros and cons to this, but seeing as this is still a very small personal blog, I think I can manage all my posts manually (for now...).
+    -  I can also keep all these articles stored in the repo itself, and not have
+      to deal with an external CMS. There are some pros and cons to this, but
+      seeing as this is still a very small personal blog, I think I can manage
+      all my posts manually (for now...).
 
-2. Add custom functionality to Markdown posts
+2. **Add custom functionality to Markdown posts**
 
-    Being a frontend developer, I enjoy creating fun, interactive content with JavaScript. Not sure what those will be yet, but I want the flexibility to play with my strengths here. Plus, I think it will make my blog a bit more engaging.
-
-3. Learn a new technology
-
-    This is actually huge reason why I continue to develop software, even as hobby - I love learning and working with new technologies. It helps keep me on my toes. During my day job, we usually don’t have the room to explore the latest new and shiny piece of tech - we typically stick to what we know.
-
-    This is great from a business perspective, since the technologies in our stack are backed by large communities and have so far stood the test of time. This gets pretty boring on a personal level, though, and continuing doing so runs a risk of my current skillset becoming stale. So, learning a new technology helps keep me stay on top of the industry trends.
+    - Being a frontend developer, I enjoy creating fun, interactive content with
+      JavaScript. Not sure what those will be yet, but I want the flexibility to
+      play with my strengths here. Plus, I think it will make my blog a bit more
+      engaging.
 
 
-With these goals in mind, I set out to piece my tech stack together. Here’s what I came up with .
+3. **Learn a new technology**
+
+    - This is actually huge reason why I continue to develop software, even as
+      hobby - I love learning and working with new technologies. It helps keep
+      me on my toes. During my day job, we usually don’t have the room to
+      explore the latest new and shiny piece of tech - we typically stick to
+      what we know.
+
+    - This is great from a business perspective, since the technologies in our
+      stack are backed by large communities and have so far stood the test of
+      time. This gets pretty boring on a personal level, though, and continuing
+      doing so runs a risk of my current skillset becoming stale. So, learning a
+      new technology helps keep me stay on top of the industry trends.
+
+
+With these goals in mind, I set out to piece my tech stack together. Here’s what
+I came up with .
 
 ### Next.js
 
-*This* is the ***new and shiny*** piece of tech that I’ve had my eye on for a while. With the rise in popularity of server-side rendering (SSR), [Next.js](https://nextjs.org/) [stands out in popularity](https://2020.stateofjs.com/en-US/technologies/back-end-frameworks/) among the rest. Most my blog will likely be static content anyways, so I figured it’d be a good excuse - err , *use-case* - to experiment and play with.
+*This* is the ***new and shiny*** piece of tech that I’ve had my eye on for a
+while. With the rise in popularity of server-side rendering (SSR),
+[Next.js](https://nextjs.org/)
+[stands out in popularity](https://2020.stateofjs.com/en-US/technologies/back-end-frameworks/)
+among the rest. Most my blog will likely be static content anyways, so I figured
+it’d be a good excuse - err , *use-case* - to experiment and play with.
 
 ### MDX
 
-Before I discovered Next.js, I actually first looked up [Jekyll](https://jekyllrb.com/) as the framework for which to build my site, because I remembered it featuring a way to turn Markdown files into static HTML. I’m not a Ruby developer, though, and I wanted to stay in my lane for this one.
+Before I discovered Next.js, I actually first looked up
+[Jekyll](https://jekyllrb.com/) as the framework for which to build my site,
+because I remembered it featuring a way to turn Markdown files into static HTML.
+I’m not a Ruby developer, though, and I wanted to stay in my lane for this one.
 
-It didn’t take me long to find [Josh Comeau’s](https://twitter.com/JoshWComeau/) article on [how he built his blog](https://www.joshwcomeau.com/blog/how-i-built-my-blog/), where he explained his use of Next.js and how MDX is his *secret ingredient*.
+It didn’t take me long to find [Josh Comeau’s](https://twitter.com/JoshWComeau/)
+article on
+[how he built his blog](https://www.joshwcomeau.com/blog/how-i-built-my-blog/),
+where he explained his use of Next.js and how MDX is his *secret ingredient*.
 
-[MDX](https://mdxjs.com/) extends Markdown by allowing us to embed React code within it. So, this:
+[MDX](https://mdxjs.com/) extends Markdown by allowing us to embed React code
+within it. So, this:
 
-```bash
+```markdown
+---
+title: Hello, MDX!
+excerpt: MDX is awesome!
+published: true
+publishDate: '2022-01-04T07:10:40.413Z'
+author:
+  name: Justin Cano
+  picture: /assets/jstncno-profile.png
+tags:
+  - Blog
+  - Life
+---
 # I'm an H1!
 
 ## I'm an H2!
@@ -70,7 +122,16 @@ import HelloGradient from './lib/components/hello-gradient';
 
 <br />
 
-Turns into this:
+Turns into this HTML:
+
+```html
+<h1>I’m an H1!</h1>
+<h2>I’m an H2!</h2>
+<p>This is a paragraph.</p>
+<h1>hello!</h1>
+```
+
+Which renders into this:
 
 <br />
 
@@ -80,48 +141,290 @@ Turns into this:
 
 This is a paragraph.
 
-import HelloGradient from './lib/components/hello-gradient';
-
 <HelloGradient />
 
-(shoutout to [@pokecoder](https://twitter.com/pokecoder) for the [CSS tip!](https://twitter.com/pokecoder/status/1466582413476200449))
+(shoutout to [@pokecoder](https://twitter.com/pokecoder) for the
+[CSS tip!](https://twitter.com/pokecoder/status/1466582413476200449))
 
-<br />
 
-In his blog, Josh describes a few libraries for using MDX with Next.js, and mentions he would be using [Kent C. Dodds’](https://kentcdodds.com/) [mdx-bundler](https://github.com/kentcdodds/mdx-bundler) moving forward. It seems like a pretty popular library, so I took the liberty to use it as well.
+<HorizontalRule />
+
+In his blog, Josh describes a few libraries for using MDX with Next.js, and
+mentions he would be using [Kent C. Dodds’](https://kentcdodds.com/)
+[`mdx-bundler`](https://github.com/kentcdodds/mdx-bundler) moving forward. It
+seems like a pretty popular library, so I took the liberty to use it as well.
+
+> INFO: The content between `---` is the post metadata and is managed by
+> [`frontmatter`](https://mdxjs.com/guides/frontmatter/), an MDX plugin that
+> works right out the box with `mdx-bundler`.
+
 
 ### Tailwind CSS
 
-Yet another shiny new framework that’s been generating a lot of hype. I usually use [styled-components](https://styled-components.com/) when developing React apps, but I still wanted to scratch that *“lets learn something new and trendy”* itch.
+Yet another shiny new framework that’s been generating a lot of hype. I usually
+use [`styled-components`](https://styled-components.com/) when developing React
+apps, but I still wanted to scratch that *“let's learn something new and
+trendy”* itch.
 
-Tailwind CSS poses an interesting new way of dealing with managing your CSS properties. After working with it for the blog, I realized it doesn’t really fit my use case. Tailwind is built to scale design systems.
+Tailwind CSS poses an interesting new way of managing your styles as a
+"utility-first" CSS framework. After working with it for the blog, I realized it
+doesn’t really fit my use case. Tailwind is built to scale design systems.
 
-My blog is trying to do the opposite - I want the flexibility to customize every component I create. It’s not going to scale to a team of any size, so it will probably never take full advantage of Tailwind’s full feature set, but it was fun to tinker with.
+My blog is trying to do the opposite - I want the flexibility to customize every
+component and post I create. It’s not going to scale to a team of any size, so
+it will probably never take full advantage of Tailwind’s full feature set, but
+it was fun to tinker with.
 
-Tailwind did come in handy when structuring the layout of my pages, especially when it came to making it responsive and mobile-friendly. I also found myself taking advantage of Tailwind’s configuration to manage color themes and other properties that are intended to be used throughout the entire app.
+Tailwind did come in handy when structuring the layout of my pages, especially
+when it came to making it responsive and mobile-friendly. I also found myself
+taking advantage of Tailwind’s configuration to manage color themes and other
+properties that are intended to be used throughout the entire app.
 
-I use [next-themes](https://github.com/pacocoursey/next-themes) to detect the user’s current them preference and Tailwind to detect and apply the appropriate color theme. One limiting thing about Tailwind is that it looks like it only supports two themes - a `light` mode and a `dark` mode.
+I use [next-themes](https://github.com/pacocoursey/next-themes) to detect the
+user’s current them preference and Tailwind to detect and apply the appropriate
+color theme. One limiting thing about Tailwind is that it looks like it only
+supports two themes - a `light` mode and a `dark` mode.
 
-I’ve always thought about creating more themes (more than just `light` and `dark`) for the blog as a creative outlet. When that time comes, I might switch over to a different CSS framework to better manage multiple themes.
+I’ve always thought about creating more themes (more than just `light` and
+`dark`) for the blog as a creative outlet. When that time comes, I might switch
+over to a different CSS framework to better manage multiple themes.
 
 ### Styled Components
 
-I’ve configured Tailwind to extend more class styles, but I figured it’d be limiting in the future if I wanted to fully customize my styles. At first, I used [modular SCSS](https://github.com/css-modules/css-modules) since it came with Next.js out of the box, but ran into troubles when trying to use it with mdx-bundler.
+I’ve configured Tailwind to extend more class styles, but I figured it’d be
+limiting in the future if I wanted to fully customize my styles. At first, I
+used [modular SCSS](https://github.com/css-modules/css-modules) since it came
+with Next.js out of the box, but ran into troubles when trying to use it with
+`mdx-bundler`.
 
-Apparently, I’m not the only one - I found [a](https://github.com/kentcdodds/mdx-bundler/issues/101) [few](https://github.com/kentcdodds/mdx-bundler/issues/53) [other](https://www.gbasil.dev/blog/mdx-w-scss) [developers](https://amitd.co/colophon) who’ve had the same experience.
+Apparently, I’m not the only one - I found
+[a](https://github.com/kentcdodds/mdx-bundler/issues/101)
+[few](https://github.com/kentcdodds/mdx-bundler/issues/53)
+[other](https://www.gbasil.dev/blog/mdx-w-scss)
+[developers](https://amitd.co/colophon) who’ve had the same experience.
 
-So, I ended up choosing [styled-components](https://styled-components.com/) and will be using it going forward for the rest of this blog. Styled-components are great because, as its name suggests, I can easily apply custom styles to my components, which means I can create custom components for blog posts that may need it.
+So, I ended up choosing [`styled-components`](https://styled-components.com/)
+and will be using it going forward for the rest of this blog.
+`styled-components` are great because, as its name suggests, I can easily apply
+custom styles to my components, which means I can create custom components for
+blog posts that may need it.
 
 ### Vercel
 
-The stack started with Next.js, so it seems appropriate that it ends with [Vercel](https://vercel.com/). The two names are practically analogous to each other - Next.js is developed by Vercel, and Vercel is a Platform-as-a-Service (PaaS) focused on the developer experience.
+The stack started with Next.js, so it seems appropriate that it ends with
+[Vercel](https://vercel.com/). The two names are practically analogous to each
+other - Next.js is developed by Vercel, and Vercel is a Platform-as-a-Service
+(PaaS) focused on the developer experience.
 
-Vercel makes it super easy to deploy Next.js apps on their platform. It’s just a couple of clicks to sign up and connect your GitHub repo, and a few more steps to configure your domain. From there, every new commit to your `main` branch is automatically deployed. I haven’t tried any other frameworks (like Angular or Vue), but I’m sure the experience is the same.
+Vercel makes it super easy to deploy Next.js apps on their platform. It’s just a
+couple of clicks to sign up and connect your GitHub repo, and a few more steps
+to configure your domain. From there, every new commit to your `main` branch is
+automatically deployed 🚀 I haven’t tried any other frameworks (like Angular or
+Vue), but I’m sure the experience is the same.
 
 ## Using MDX to Render Blog Posts
 
+I’ve opted for static site generation (SSG) in Next.js for my blog posts, which
+means those pages are generated *at build time* and deployed as static HTML
+files. Because generated static site pages are built in advance, they provided a
+slightly better performance, due to the faster load time from not having to
+fetch and render content on the client side.
+
+> INFO: For more info on static site generation, check out
+> [this Cloudflare blog](https://www.cloudflare.com/learning/performance/static-site-generator)
+> on the topic.
+
+The `mdx-bundler` library fit in well with SSG in Next.js - it’s used to first
+convert my markdown content into HTML, then Next.js uses that HTML to create a
+React component and generate the final static page that you viewing right now.
+
+SSG is enabled in Next.js if at least one of the following functions are defined
+and exported in a
+[`Page`](https://nextjs.org/learn/basics/navigate-between-pages/pages-in-nextjs)
+file: [`getStaticProps`](https://nextjs.org/docs/basic-features/data-fetching/get-static-props#getstaticprops),
+[`getServerSideProps`](https://nextjs.org/docs/basic-features/data-fetching/get-server-side-props),
+or [`getStaticPaths`](https://nextjs.org/docs/basic-features/data-fetching/get-static-paths#getstaticpaths)
+(see more on [Dynamic Routes](https://nextjs.org/learn/basics/dynamic-routes)). Here’s how I’ve defined it for my blog post pages:
+
+### Rendering an MDX React Component
+
+First, I define routes to each available blog post. Each post is identifiable
+by it's post ID (`pid`), which is the same as the name of the file it's saved
+under.
+
+I load up all the file names of all the posts saved under my `_posts/` directory
+in `getStaticPaths` to configure Next.js with these routes:
+
+As you can see with [this post](/blog/how-i-built-my-blog), the **route** is
+`/blog/how-i-built-my-blog` and the `pid` is `how-i-built-my-blog`.
+
+```ts
+// pages/blog/[pid].tsx
+export const getStaticPaths = async () => {
+  const posts = await getAllPosts();
+
+  return {
+    paths: posts.map((post) => {
+      return {
+        params: {
+          pid: post.pid,
+        },
+      }
+    }),
+    fallback: false,
+  }
+};
+```
+
+A new statically generated `Page` needs to be built for every new route we just
+defined. Next.js `Page`s are React components, andlLearning how to use
+`mdx-bundler` to render MDX as a React component comes straight
+[from the docs](https://github.com/kentcdodds/mdx-bundler/tree/v8.0.0#component-substitution).
+
+For every `pid` (for each of the routes we just created), `getStaticProps` is
+called to load a post's MDX code:
+
+```ts
+// pages/blog/[pid].tsx
+export const getStaticProps = async ({ params }: Params) => {
+  const {pid} = params;
+  const {code, frontmatter} = await getPost(pid);
+  if (!frontmatter.published) {
+    return {
+      notFound: true,
+    }
+  }
+  return {
+    props: {
+      code,
+      frontmatter,
+    },
+  };
+};
+```
+
+Which gets passed into the `Page`'s component as props:
+
+```tsx
+// pages/blog/[pid].tsx
+export default function BlogPost({code, frontmatter}: MarkdownPost) {
+  const Component = React.useMemo(() => getMDXComponent(code), [code]);
+  return (
+    <>
+			{/* < ... > */}
+      <Component components={{
+        h1: H1 as React.FC,
+        h2: H2 as React.FC,
+        h3: H3 as React.FC,
+        p: P as React.FC,
+        a: Link as React.FC,
+        pre: Pre as React.FC,
+        code: Code as React.FC,
+        blockquote: Callout as React.FC,
+        ol: OrderedList as React.FC,
+        ul: UnorderedList as React.FC,
+        li: ListItem as React.FC,
+      }} />
+			{/* < ... > */}
+    </>
+  );
+}
+```
+
+You might notice that I'm defining every HTML element I expect to be rendered
+out by the MDX component. I did this because each HTML element was rendering
+with no styles.
+
+This resulted with articles rendering as a huge slew of words
+with no formatting. Even things like lists (`<ol></ol>` and `<ul></ul>`) would
+be rendered without numbers, bullet points, or indentation.
+
+I suspect that it might have something to do with how Tailwind hijacks and
+strips all styles from elements before applying them through class names. This
+is find for me, though, since I think the amount of elements I'd have to style
+is decently manageable.
+
+<HorizontalRule />
+
+### Loading MDX Files
+
+I currently have all my markdown articles saved into a `_posts/` directory,
+where each file name is the `pid` (post ID) of that post. Since Next.js builds
+runes in a Node.js environment, we can use native APIs to read MDX files
+directly on the filesystem.
+
+Here are the utility functions I created for conveniently reading my
+MDX-formatted articles:
+
+```javascript
+// lib/utils.ts
+import fs from 'fs';
+import path from 'path';
+
+import { bundleMDX } from 'mdx-bundler';
+
+const POSTS_DIR = path.join(process.cwd(), '_posts');
+
+export interface MarkdownPost {
+  pid: string;
+  code: string;
+  frontmatter: {[key: string]: any};
+};
+
+export function getAllPostIds(): string[] {
+  return fs.readdirSync(POSTS_DIR)
+    .filter(p => p.endsWith('.mdx'))
+    .map(p => p.replace(/\.mdx$/, ''));
+}
+
+export function getPostMarkdown(pid: string): string {
+  const filepath = path.join(POSTS_DIR, `${pid}.mdx`);
+  return fs.readFileSync(filepath, 'utf-8').trim();
+}
+
+export async function getAllPosts(publishedOnly = true): Promise<MarkdownPost[]> {
+  const posts = await Promise.all(getAllPostIds().map(pid => getPost(pid)));
+	// Sorted by most recent first
+  posts.sort((post1, post2) =>
+      post1.frontmatter.publishDate > post2.frontmatter.publishDate ? -1 : 1);
+  if (!publishedOnly) return posts;
+  return posts.filter(post => post.frontmatter.published);
+}
+
+export async function getPost(pid: string): Promise<MarkdownPost> {
+  const md = getPostMarkdown(pid);
+  const {code, frontmatter} = await bundleMDX(md, {
+    cwd: process.cwd(),
+    esbuildOptions: options => ({
+      ...options,
+      target: 'es2020',
+      platform: 'node',
+    }),
+  });
+  return {pid, code, frontmatter};
+}
+```
+
+<HorizontalRule />
+
+Now, every time I build my blog, it converts every blog post I've written as a
+Markdown document into a static HTML page! When deployed, users will be able to
+read my content immediately without having to wait for additional content
+rendered by JavaScript and fetched from a separate source.
+
+Actually, since this [GitHub](https://github.com/jstncno/jstncno.github.io)
+project is connected to Vercel, I don't have to run any builds myself! Vercel
+is like magic with Next.js apps - as soon as I publish to my `main` branch,
+Vercel kicks off a build and automatically deploys my site to production 🎉
+
 ## Future
 
-Since the [launch of my blog](https://www.notion.so/blog-hello-world-3d29bc43e2c44762a64fef3662f13b37), I’m determined on making it an **active** project of mine, meaning I intend to develop more features in the future. I can already foresee what features to include, and some of them may be worth writing a blog post about, so stay tuned for more updates!
+Since the [launch of my blog](https://www.notion.so/blog-hello-world-3d29bc43e2c44762a64fef3662f13b37),
+I’m determined on making it an **active** project of mine, meaning I intend to
+develop more features in the future as I continue blogging and adding content.
+
+It was actually in writing this post that I realized I needed to style more
+components, like the blockquotes and code snippets you see here. I'm sure I'll
+come up with new ideas as I move along.
 
 Thanks for reading!
