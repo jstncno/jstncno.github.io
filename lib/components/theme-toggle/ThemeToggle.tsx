@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Switch } from '@headlessui/react'
 
+import { Theme } from '@jstncno/lib';
+
 export interface ThemeToggleProps {
   theme?: string;
   onThemeChanged?: (theme: string) => void;
@@ -12,14 +14,16 @@ export default function ThemeToggle({theme, onThemeChanged}: ThemeToggleProps) {
   const [moonIcon, setMoonIcon] = useState('visible');
 
   useEffect(() => {
-    setLightTheme(theme === 'light');
-    setSunIcon(theme === 'light' ? 'visible' : 'invisible');
-    setMoonIcon(theme === 'dark' ? 'visible' : 'invisible');
+    const theme_ = Object.values(Theme).includes(theme as Theme) ?
+      theme : Theme.LIGHT;
+    setLightTheme(theme_ === Theme.LIGHT);
+    setSunIcon(theme_ === Theme.LIGHT ? 'visible' : 'invisible');
+    setMoonIcon(theme_ === Theme.DARK ? 'visible' : 'invisible');
   }, [theme])
 
   function toggle() {
-    const newTheme = theme === 'light' ? 'dark' : 'light';
-    setLightTheme(newTheme === 'light');
+    const newTheme = theme === Theme.LIGHT ? Theme.DARK : Theme.LIGHT;
+    setLightTheme(newTheme === Theme.LIGHT);
     onThemeChanged && onThemeChanged(newTheme);
   }
 

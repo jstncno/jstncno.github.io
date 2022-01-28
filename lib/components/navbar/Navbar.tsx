@@ -5,6 +5,7 @@ import { useTheme } from 'next-themes'
 
 import Logo from '@jstncno/lib/components/logo/Logo';
 import ThemeToggle from '@jstncno/lib/components/theme-toggle/ThemeToggle';
+import { Theme } from '@jstncno/lib';
 import { SOCIAL_MEDIA } from '@jstncno/lib/constants';
 
 
@@ -28,12 +29,12 @@ export default function Navbar() {
                   </a>
                 ))}
                 <span className="hidden md:inline">
-                  <ThemeToggle theme={theme ?? 'light'} onThemeChanged={setTheme} />
+                  <ThemeToggle theme={theme ?? Theme.LIGHT} onThemeChanged={setTheme} />
                 </span>
               </div>
             </div>
             <div className="flex items-center md:hidden rounded-md m-2 p-2">
-              <ThemeToggle theme={theme ?? 'light'} onThemeChanged={setTheme} />
+              <ThemeToggle theme={theme ?? Theme.LIGHT} onThemeChanged={setTheme} />
               {/* Mobile menu button */}
               <Menu as="div" className="relative inline-block text-left">
                 <Menu.Button className="bg-transparent rounded-md m-2 p-2 inline-flex items-center justify-center text-primary dark:text-primary-dark hover:bg-background-light dark:hover:bg-background-dark focus:outline-none">
