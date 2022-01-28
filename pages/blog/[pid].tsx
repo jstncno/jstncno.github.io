@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Image from 'next/image';
 import { getMDXComponent } from 'mdx-bundler/client';
 
@@ -8,6 +8,10 @@ import { Callout, Code, H1, H2, H3, Link, ListItem, OrderedList, P, Pre, Publish
 import { getAllPosts, getPost, MarkdownPost } from '@jstncno/lib/utils';
 import Head from 'next/head';
 
+declare namespace Prism {
+  function highlightAll(): void;
+}
+
 type Params = {
   params: {
     pid: string
@@ -15,6 +19,10 @@ type Params = {
 };
 
 export default function BlogPost({code, frontmatter}: MarkdownPost) {
+  useEffect(() => {
+    Prism.highlightAll();
+  }, []);
+
   const Component = React.useMemo(() => getMDXComponent(code), [code]);
   return (
     <Article>
