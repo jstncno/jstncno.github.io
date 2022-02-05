@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import Image from 'next/image';
 import { getMDXComponent } from 'mdx-bundler/client';
 
+
 import Article from '@jstncno/lib/layouts/Article';
 import Chips from '@jstncno/lib/components/chips/Chips';
 import { Callout, Code, H1, H2, H3, Link, ListItem, OrderedList, P, Pre, PublishDate, UnorderedList, TitleLink, HorizontalRule } from '@jstncno/lib/components/typography';
@@ -19,8 +20,13 @@ type Params = {
 };
 
 export default function BlogPost({code, frontmatter}: MarkdownPost) {
+  function highlightAll() {
+    if (typeof Prism === 'undefined') setTimeout(highlightAll, 250);
+    else Prism.highlightAll();
+  }
+
   useEffect(() => {
-    Prism.highlightAll();
+    highlightAll();
   }, []);
 
   const Component = React.useMemo(() => getMDXComponent(code), [code]);
