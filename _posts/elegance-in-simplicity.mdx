@@ -1,0 +1,126 @@
+---
+title: Elegance in Simplicity
+excerpt: >-
+  Sometimes, we don't always need a complex solution.
+published: false
+publishDate: '2022-02-04T07:10:40.413Z'
+author:
+  name: Justin Cano
+  picture: /assets/jstncno-profile.png
+tags:
+  - Software Development
+---
+import HorizontalRule from './lib/components/typography/HorizontalRule';
+
+The other day, a senior engineer called a quick meeting to sync for some
+clarification on how to resolve a technical issue.
+
+Without going into too much detail, we are working on a greenfield frontend
+project that needs to interact with a legacy backend (one of the requirements is
+that we don't change the backend), and the new UI exposes a way for the user to
+enter a state that the backend won't accept.
+
+The engineer understood the problem very well and was very concerned (rightly
+so) about how handling this new state can overcomplicate the system if we're not
+careful.
+
+> What happens when the user clicks "Save"?
+> How can we represent this new state in the backend?
+> What about all the edge cases? etc.
+
+Their concerns are valid.
+
+When this engineer posed this to me, I noticed something simple they seemed to
+have overlooked.
+
+I reminded them that this state only exists in the frontend. We can consider it
+an "invalid" state, because the backend won't accept it.
+
+We also have a "Save" button - why not disable it if we detect that the state is
+invalid?
+
+Poof - problem gone. A simple solution to an otherwise complicated problem.
+
+But, if this was so simple, why wasn't this thought of before?
+
+Well, sometimes, _simple_ is not the same thing as _obvious_.
+
+<HorizontalRule />
+
+Now, this engineer is very talented. I've experienced first-hand the quality of
+their code and the detailed way they think through complex problems. I have full
+confidence in their skills and abilities, and so I think this person fell into
+the same trap that many engineers (including myself) fall into.
+
+Personally, I love solving complex technical problems. It's a thrill I think
+many developers can relate to. I'll usually first try to solve the base case,
+then work my way up towards the general case. But...I also have a tendency to
+overcomplicate complicate things, especially when I run into edge cases, etc.
+
+Sometimes I go down so deep in the rabbit hole I forget where I should stop.
+
+But hey, complex problems require complex solutions, _right_?
+
+This interaction reminded me of something I feel fortunate to have learned early
+on in my computer science studies.
+
+During the spring time of my sophomore year of college, I was asking a good
+friend of mine (same year, but already a couple classes ahead of me) for help on
+a lab assignment for some Algorithms and Data Structures class I was in.
+
+I don't remember _exactly_ what the assignment was (it probably had something
+to do with implementing a tree or graph or something) - I just remember
+scratching my head and thinking too hard about it.
+
+After showing my friend my chicken-scratch code of the assignment, he told me
+that I was overcomplicating things, that I was thinking too hard about it. Here
+are some of the ideas I remembered from this really important (in my opinion)
+programming lesson:
+
+> The solutions to these are a lot more **elegant**.
+
+> If you've found yourself needing to write for tons of different edge cases,
+> you've probably went too far.
+
+> There's **elegance** in **simplicity**.
+
+I didn't get it at first, but when I finally found the solution, thats when I
+saw it.
+
+The solution - the functions we had to implement - they were all like 3 or 4
+lines of code each. Much, **_much_** more concise and readable than the crazy
+amount of `if`s, `switch`es, and helper functions in my chicken-scratch
+implementation.
+
+The ultimate solution is **simple**, **beautiful**, and **elegant**.
+
+<HorizontalRule />
+
+This was not a one-off experience curated through my studies. This has been a
+theme I've seen time and time again in quality code - **simplicity brings
+elegance**.
+
+There's also an added bonus that "elegant code" is more readable so new
+developers can understand and comprehend your code quicker.
+
+Obviously, not all problems can be blessed with a simple and elegant solution.
+Some (if not most) problems you'll encounter will have a solution that is
+complex by nature (I am speaking from experience). But just the *idea* of
+elegant solutions has become an internal compass of mine, guiding me down the
+deep path of solving a complex problem.
+
+If I've gone too deep, I'll pop my head back up, take a step back,
+maybe take a break, and perhaps revisit the problem at a different angle.
+
+Are there parts of the system that can be simplified?
+
+Are edge-case handling getting out hand?
+
+Any other questions I should ask for this particular problem?
+
+Still, even if the answer is "no" and I still need to dig down deeper, I still
+find that there's still a lot to gain from being able to step back and revisit
+the whole picture, so that I know I'm still on the right path and haven't gone
+too far astray.
+
+Thanks for reading!
