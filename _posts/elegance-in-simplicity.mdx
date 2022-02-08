@@ -12,20 +12,22 @@ tags:
 ---
 import HorizontalRule from './lib/components/typography/HorizontalRule';
 
-The other day, a senior engineer called a quick meeting to sync for some
-clarification on how to resolve a technical issue.
+**The other day, an engineer had asked to discuss with me a technical problem
+they were facing.** The requirements weren't clear, and they needed some
+guidance.
 
-Without going into too much detail, we are working on a greenfield frontend
-project that needs to interact with a legacy backend (one of the requirements is
-that we don't change the backend), and the new UI exposes a way for the user to
-enter a state that the backend won't accept.
+We are working on a greenfield frontend project that needs to interact with a
+legacy backend, and the _new_ UI introduces a new way for the user to enter a
+state in which the backend won't accept.
 
 The engineer understood the problem very well and was very concerned (rightly
 so) about how handling this new state can overcomplicate the system if we're not
 careful.
 
 > What happens when the user clicks "Save"?
+
 > How can we represent this new state in the backend?
+
 > What about all the edge cases? etc.
 
 Their concerns are valid.
@@ -34,7 +36,7 @@ When this engineer posed this to me, I noticed something simple they seemed to
 have overlooked.
 
 I reminded them that this state only exists in the frontend. We can consider it
-an "invalid" state, because the backend won't accept it.
+an _invalid_ state, because the backend won't accept it.
 
 We also have a "Save" button - why not disable it if we detect that the state is
 invalid?
