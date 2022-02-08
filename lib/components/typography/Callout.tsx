@@ -8,6 +8,7 @@ export interface CalloutProps {
 }
 
 export enum CalloutType {
+  BLOCK_QUOTE = 'BLOCK_QUOTE',
   INFO = 'INFO',
   WARN = 'WARN',
 }
@@ -35,10 +36,12 @@ export default function Callout(props: CalloutProps) {
 
 
   return (
-    <div className={`${style} container flex rounded-md w-[90%] mx-auto mb-7 px-6 py-4 border-l-4 border-solid`}>
-      <div className="descriptor pt-1 pr-5 mr-5 border-r border-solid border-gray-400">
-        {icon}
-      </div>
+    <div className={`${style} container flex w-[90%] mx-auto mb-7 px-6 py-4 border-l-4 border-solid`}>
+      {icon &&
+        <div className="descriptor pt-1 pr-5 mr-5 border-r border-solid border-gray-400">
+          {icon}
+        </div>
+      }
 
       <div className="content">
         <p>
@@ -58,20 +61,24 @@ function isReactElement(object: any): object is React.ReactElement {
 function styleForCalloutType(callout?: CalloutType): string {
   switch (callout) {
     case CalloutType.WARN:
-      return 'border-yellow-600 bg-yellow-50 text-gray-900';
+      return 'rounded-md border-yellow-600 bg-yellow-50 text-gray-900';
     case CalloutType.INFO:
+      return 'rounded-md border-gray-600 bg-gray-300 text-gray-800';
+    case CalloutType.BLOCK_QUOTE:
     default:
-      return 'border-gray-600 bg-gray-300 text-gray-800';
+      return 'italic rounded-sm border-gray-400 bg-gray-300 text-gray-700';
   }
 }
 
-function iconForCalloutType(callout?: CalloutType): JSX.Element {
+function iconForCalloutType(callout?: CalloutType): JSX.Element|null {
   switch (callout) {
     case CalloutType.WARN:
       return <ExclamationIcon className="text-yellow-600 h-6 w-6" />
     case CalloutType.INFO:
-    default:
       return  <InformationCircleIcon className="h-6 w-6" />;
+    case CalloutType.BLOCK_QUOTE:
+    default:
+      return null;
   }
 }
 
