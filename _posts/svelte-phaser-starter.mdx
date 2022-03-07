@@ -1,0 +1,128 @@
+---
+title: Bootstrapping Phaser 3 Games with Svelte
+excerpt: >-
+  Svelte is a great way to bootstrap Phaser games for deployment to the web.
+  Here are some things that I've learned after experimenting with them.
+published: true
+publishDate: '2022-03-07T01:48:58.664Z'
+author:
+  name: Justin Cano
+  picture: /assets/jstncno-profile.png
+tags:
+  - TypeScript
+  - Svelte
+  - Phaser 3
+---
+
+import YouTubePlayer from './lib/components/youtube-player/YouTubePlayer';
+
+## Intro
+
+My software development interests in the past couple months have been focused
+almost entirely on
+[game development](https://www.freecodecamp.org/news/what-is-game-development/).
+
+During my journey, I started thinking about how I can bootstrap Phaser games
+with all the fancy developer tools that make frontend development productive and
+efficient like TypeScript, code bundling, hot reloading, etc.
+
+I've seen [Svelte 3](https://svelte.dev/blog/svelte-3-rethinking-reactivity)
+start to rise in popularity, so I was very eager to try it.
+
+So far, I've found that Svelte offers a bunch of things out of the box that
+makes for a pleasant developer experience. Creating a Phaser game on top of it
+felt like a piece of cake.
+
+Here are some notes that I have.
+
+> INFO: I've created a starter template for developing Phaser apps using
+> Svelte. See the
+> [GitHub repo](https://github.com/jstncno/svelte-phaser-starter) to try it out.
+
+## What is Phaser?
+
+[Phaser](https://phaser.io/) is a popular JavaScript and HTML5 game framework.
+Building games for the web imposes constraints implied by the browser, so you
+probably won't see any AAA games out there built with it, but for smaller games
+and aspiring indie game developers, who are also web developers (like me), I
+think this is a good fit.
+
+## What is Svelte?
+
+Svelte is a component framework like
+[React](https://reactjs.org/) and [Angular](https://angular.io/), but rather
+than be a browser runtime, Svelte is a _compiler_ that compiles Svelte files
+into performant vanilla JavaScript code.
+
+<YouTubePlayer src="https://www.youtube.com/embed/rv3Yq-B8qp4" />
+
+## How does Svelte help with developing a game with Phaser?
+
+Phaser has a [huge API surface](https://newdocs.phaser.io/) that probably covers
+everything that you need to build your game. Why would you need to add Svelte
+to the mix?
+
+As a Phaser developer, you're probably developing UI within the game itself. In
+this sense, admittedly Svelte doesn't provide much value there. All JS component
+frameworks are the same in that regard.
+
+But outside of component development, Svelte has a couple of neat tricks up its
+sleeve to really work _with_ the developer.
+
+### A modern JS build stack
+
+Phaser covers a large breadth of everything that could involve game development,
+but I don't think the Phaser project has been able to "keep up" with the latest
+trends in the JavaScript development ecosytem.
+
+[Phaser 4](https://github.com/phaserjs/phaser) seems to focus on modernizing
+its development stack. It's still in active development and not yet production-ready,
+but it's exciting nonetheless. I'll definitely be following this one!
+
+**Bootstrapping a Phaser project with Svelte** will provide a modern JS
+development toolchain with **minimal boilerplate**.
+
+This results in an **ehanced developer experience**, and opens the door for
+_single-command deployments_ to popular hosting services like
+[Vercel](https://vercel.com) and [surge](https://surge.sh/)!
+
+### State management, for free!
+
+When studying game development in college, I learned it was important to
+properly manage **game state**.
+
+[Unity](https://unity.com/) provides a [native way](https://docs.unity3d.com/Manual/StateMachineBasics.html)
+to manage **state** and **state machines**. But the JS world is the Wild West -
+[there](https://openbase.com/js/xstate) [are](https://openbase.com/js/zustand)
+[a](https://openbase.com/js/mobx) [number](https://openbase.com/js/valtio)
+of state management libraries for JS.
+
+One of the most popular libraries is [Redux](https://openbase.com/js/redux),
+though it's notoriously known for
+[the amount of boilerplate](https://redux.js.org/usage/reducing-boilerplate)
+required just to get started.
+
+Out of the box, Svelte provides reactive [stores](https://svelte.dev/docs#run-time-svelte-store)
+that are accessible from any part of your code, which you can use to manage
+state.
+
+## How can I bootstrap my Phaser project with Svelte?
+
+I've created a [`svelte-phaser-starter`](https://github.com/jstncno/svelte-phaser-starter)
+template to help get developers get started quickly. To set up the template:
+
+```
+npx degit jstncno/svelte-phaser-starter my-phaser-game
+cd my-phaser-game
+npm install
+npm run dev
+```
+
+## Conclusion
+
+Svelte creator [Rich Harris](https://twitter.com/Rich_Harris) put an emphasis
+on ["developer experience"](https://www.infoworld.com/article/3639521/svelte-creator-web-development-should-be-more-fun.html)
+when he developed the framework, and it does indeed deliver.
+
+With its smooth developer "ergonomics" and toolkits useful for game development,
+Svelte provides to be a great addition to your stack.
