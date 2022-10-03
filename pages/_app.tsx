@@ -10,13 +10,10 @@ import SplashPage from '@jstncno/lib/components/splash-page/SplashPage';
 
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
-  const component = (
-    window.location.hostname.startsWith('blog.') ||
-    router.pathname !== '/'
-  ) ? <AppShell>
-        <Component {...pageProps} />
-      </AppShell> :
-      <SplashPage />;
+  const component = router.pathname === '/' ? <SplashPage /> :
+    <AppShell>
+      <Component {...pageProps} />
+    </AppShell>;
   return component;
 }
 export default MyApp;
