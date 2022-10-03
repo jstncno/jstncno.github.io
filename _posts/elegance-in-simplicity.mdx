@@ -16,8 +16,14 @@ import HorizontalRule from './lib/components/typography/HorizontalRule';
 they were facing.** The requirements weren't clear, and they needed some
 guidance.
 
+To simplify things, we are developing on a new UI for a legacy backend. This
+new UI allows users to save state by calling the backend APIs, but the user can
+somehow enter a state which is incompatible with the backend.
+
 We are working on a greenfield frontend project that needs to interact with a
-legacy backend, and the _new_ UI introduces a new way for the user to enter a
+legacy backend. This _new_ UI has an Admin page that introduces a new
+
+way for the user to enter a
 state in which the backend won't accept.
 
 The engineer understood the problem very well and was very concerned (rightly

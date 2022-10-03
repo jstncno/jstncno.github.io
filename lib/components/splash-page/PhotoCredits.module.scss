@@ -1,0 +1,20 @@
+.copy {
+  background: rgb(123 123 123 / 50%);
+  border-radius: 3px;
+  bottom: 5rem;
+  color: floralwhite;
+  font-family: "Raleway", "Poppins", "Questrial", "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+  font-size: 0.75rem;
+  padding: 1.25rem;
+  position: absolute;
+  right: 9rem;
+  text-align: center;
+  z-index: 2;
+
+  a:link,
+  a:visited,
+  a:hover {
+    color: #F6F1D1;
+    text-decoration: underline;
+  }
+}
