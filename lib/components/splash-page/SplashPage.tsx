@@ -51,7 +51,7 @@ export default function SplashPage() {
         Welcome to my site! My name is Justin, and I
         currently work as an Technical Lead on the
         Experience Studio Team @ <a href="https://www.google.com/">Google</a>,
-        building software systems for Google Experience Centers.
+        developing software systems for Google Experience Centers.
         <SocialButtons />
       </div>
       {photoCredits}
