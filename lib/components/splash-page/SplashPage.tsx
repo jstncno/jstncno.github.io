@@ -3,7 +3,6 @@ import Image from 'next/image'
 import { Basic } from 'unsplash-js/dist/methods/photos/types';
 
 import styles from './SplashPage.module.scss';
-import Greeting from './Greeting';
 import Loader from './Loader';
 import PhotoCredits from './PhotoCredits';
 
@@ -38,9 +37,15 @@ export default function SplashPage() {
     <Loader hide={loaded} />
     {backgroundPhoto}
     <div className={styles.overlay}></div>
-    <div className={styles.copy}>
-      <Greeting />
+    <div className={styles.content}>
+      <div className={styles.hello}>Hi there.</div>
+      <div className={styles.greeting}>
+        Welcome to my site! My name is Justin, and I
+        currently work as an Technical Lead on the
+        Experience Studio Team @ <a href="https://www.google.com/">Google</a>,
+        building software for Google Experience Centers.
+      </div>
+      {photoCredits}
     </div>
-    {photoCredits}
   </>;
 }

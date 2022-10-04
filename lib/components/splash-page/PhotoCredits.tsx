@@ -10,7 +10,7 @@ export default function PhotoCredits(props: PhotoCreditsProps) {
 
   return (
     <div className={styles.copy}>
-      <div id='photo-credits'>
+      <div className={styles.photoCredits}>
         Photo by <a href={photographerUrl}>{photograher}</a>
         <br />
         via <a href="http://www.unsplash.com">Unsplash</a>.
