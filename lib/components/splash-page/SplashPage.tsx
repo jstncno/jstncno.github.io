@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
+import Head from 'next/head';
 import Image from 'next/image'
 import { Basic } from 'unsplash-js/dist/methods/photos/types';
 
 import styles from './SplashPage.module.scss';
 import Loader from './Loader';
 import PhotoCredits from './PhotoCredits';
+import SocialButtons from './SocialButtons';
 
 
 export default function SplashPage() {
@@ -34,6 +36,12 @@ export default function SplashPage() {
       photographerUrl={photo.urls.full} />;
 
   return <>
+    <Head>
+      <link rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"
+        integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1"
+        crossOrigin="anonymous" />
+    </Head>
     <Loader hide={loaded} />
     {backgroundPhoto}
     <div className={styles.overlay}></div>
@@ -44,6 +52,7 @@ export default function SplashPage() {
         currently work as an Technical Lead on the
         Experience Studio Team @ <a href="https://www.google.com/">Google</a>,
         building software for Google Experience Centers.
+        <SocialButtons />
       </div>
       {photoCredits}
     </div>
