@@ -31,9 +31,7 @@ export default function SplashPage() {
       onLoadingComplete={initialize} />;
 
   const photoCredits = photo &&
-    <PhotoCredits
-      photograher={photo.user.username}
-      photographerUrl={photo.urls.full} />;
+    <PhotoCredits photograher={photo.user.username} photoId={photo.id} />;
 
   return <>
     <Head>
