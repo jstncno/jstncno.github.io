@@ -1,0 +1,86 @@
+.container {
+  background: rgb(64,64,64);
+  background: linear-gradient(120deg, rgba(64,64,64,1) 0%, rgba(47,47,47,1) 26%, rgba(0,0,0,1) 100%);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  height: 100vh;
+  left: 0;
+  opacity: 1;
+  position: absolute;
+  top: 0;
+  transition: opacity 0.75s;
+  width: 100vw;
+  z-index: 100;
+
+  &.hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .loader {
+    grid-area: 2 / 2 / 3 / 3;
+    height: 40px;
+    margin: auto;
+    width: 40px;
+
+    .cube {
+      animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out;
+      background-color: #d7d7d7;
+      float: left;
+      height: 33%;
+      width: 33%;
+
+      &:nth-child(1) {
+        animation-delay: 0.2s;
+      }
+
+      &:nth-child(2) {
+        animation-delay: 0.3s;
+      }
+
+      &:nth-child(3) {
+        animation-delay: 0.4s;
+      }
+
+      &:nth-child(4) {
+        animation-delay: 0.1s;
+      }
+
+      &:nth-child(5) {
+        animation-delay: 0.2s;
+      }
+
+      &:nth-child(6) {
+        animation-delay: 0.3s;
+      }
+
+      &:nth-child(7) {
+        animation-delay: 0.0s;
+      }
+
+      &:nth-child(8) {
+        animation-delay: 0.1s;
+      }
+
+      &:nth-child(9) {
+        animation-delay: 0.2s;
+      }
+    }
+  }
+}
+
+
+@keyframes sk-cubeGridScaleDelay {
+  0%,
+  70%,
+  100% {
+   transform: scale3D(1, 1, 1);
+  }
+  35% {
+   transform: scale3D(0, 0, 1);
+  }
+ }
+
