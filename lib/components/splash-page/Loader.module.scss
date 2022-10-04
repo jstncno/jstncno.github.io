@@ -6,13 +6,13 @@
   grid-template-rows: repeat(3, 1fr);
   grid-column-gap: 0px;
   grid-row-gap: 0px;
-  height: 100vh;
+  height: 100%;
   left: 0;
   opacity: 1;
   position: absolute;
   top: 0;
   transition: opacity 0.75s;
-  width: 100vw;
+  width: 100%;
   z-index: 100;
 
   &.hidden {
@@ -27,7 +27,7 @@
     width: 40px;
 
     .cube {
-      animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out;
+      animation: loading-anim 1.3s infinite ease-in-out;
       background-color: #d7d7d7;
       float: left;
       height: 33%;
@@ -73,7 +73,7 @@
 }
 
 
-@keyframes sk-cubeGridScaleDelay {
+@keyframes loading-anim {
   0%,
   70%,
   100% {
