@@ -1,11 +1,11 @@
 .overlay {
   background-color: slategray;
-  position: relative;
-  width: 100vw;
-  height: 100vh;
+  height: 100%;
   opacity: 0.5;
   -moz-opacity: 50%;
   -webkit-opacity: 50%;
+  position: absolute;
+  width: 100%;
   z-index: 1;
 }
 
@@ -14,7 +14,7 @@
   display: grid;
   grid-template-columns: 2rem 1fr 2rem;
   grid-template-rows: 0.25fr 1fr 0.25fr 2fr 1fr 0.5fr;
-  height: 100vh;
+  height: 100%;
   left: 0;
   position: absolute;
   top: 0;
