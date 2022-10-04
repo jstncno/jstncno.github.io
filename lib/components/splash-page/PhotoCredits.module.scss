@@ -1,20 +1,33 @@
 .copy {
-  background: rgb(123 123 123 / 50%);
-  border-radius: 3px;
-  bottom: 5rem;
   color: floralwhite;
+  display: flex;
   font-family: "Raleway", "Poppins", "Questrial", "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
   font-size: 0.75rem;
-  padding: 1.25rem;
-  position: absolute;
-  right: 9rem;
-  text-align: center;
-  z-index: 2;
+  grid-area: 5 / 2 / 6 / 3;
 
   a:link,
   a:visited,
   a:hover {
     color: #F6F1D1;
     text-decoration: underline;
+  }
+
+  .photoCredits {
+    background: rgb(123 123 123 / 50%);
+    border-radius: 3px;
+    margin: auto;
+    padding: 1.25rem;
+    text-align: center;
+  }
+}
+
+
+@media only screen and (min-width: 992px)  {
+  .copy {
+    grid-area: 5/2/6/4;
+
+    .photoCredits {
+      margin-right: 10rem;
+    }
   }
 }
