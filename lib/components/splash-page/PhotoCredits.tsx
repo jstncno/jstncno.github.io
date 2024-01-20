@@ -15,11 +15,11 @@ export default function PhotoCredits(props: PhotoCreditsProps) {
   return (
     <div className={styles.copy}>
       <div className={styles.photoCredits}>
-        Photo by <a href={photographerUrl.href} target='_blank'>
+        Photo by <a href={photographerUrl.href} target="_blank" rel="noreferrer" >
           {photograher}
         </a>
         <br />
-        via <a href={photoUrl.href} target='_blank'>Unsplash</a>.
+        via <a href={photoUrl.href} target="_blank" rel="noreferrer">Unsplash</a>.
       </div>
     </div>
   );

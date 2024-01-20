@@ -29,7 +29,7 @@ export default function App({allPosts}: {allPosts: MarkdownPost[]}) {
             <Hero>DEV BLOG</Hero>
             <div className="items-center mt-6 md:mt-0 grid grid-cols-3 grid-rows-1 gap-x-4">
               <div className="col-start-1 max-w-164px lg:hidden">
-                <Image src={profilePic} priority layout="responsive" />
+                <Image src={profilePic} alt="Profile picture" priority layout="responsive" />
               </div>
               <div className="text-sm col-start-2 col-end-6 lg:col-start-1 lg:text-base">
                 <P>
@@ -59,7 +59,7 @@ export default function App({allPosts}: {allPosts: MarkdownPost[]}) {
         <aside className="md:col-span-6 lg:col-start-5 lg:col-span-1">
           <div className="grid grid-rows-3">
             <section className="hidden lg:block row-start-1 w-2/3 text-center lg:text-left">
-              <Image src={profilePic} width={196} height={196} />
+              <Image src={profilePic} alt="Profile picture" width={196} height={196} />
             </section>
             {/* TODO (jstncno): Determine "popularity" metric */}
             {/* <section className="row-start-1 lg:row-start-2">

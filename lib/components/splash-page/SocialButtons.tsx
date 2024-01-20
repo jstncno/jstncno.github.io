@@ -37,7 +37,7 @@ export default function SocialButtons() {
         const {name, fontAwesomeName, link} = data;
         const fontAwesome = `fa ${fontAwesomeName} fa-4x`;
         return <span key={i}>
-          <a href={link} target="_blank">
+          <a href={link} target="_blank" rel="noreferrer">
             <i className={fontAwesome + ' ' + styles.fa} aria-hidden='true'></i>
           </a>
         </span>;

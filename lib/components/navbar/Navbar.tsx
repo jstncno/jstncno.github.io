@@ -24,7 +24,7 @@ export default function Navbar() {
             <div className="ml-2 flex flex-grow invisible md:visible items-center">
               <div className="ml-10 flex flex-grow items-end space-x-4 justify-end">
                 {SOCIAL_MEDIA.map(({href, icon}, idx) => (
-                  <a href={href} key={idx} target="_blank" className="text-primary dark:text-primary-dark hover:text-gray-300 hover:text-white rounded-md text-md font-medium mb-[4px]">
+                  <a href={href} key={idx} target="_blank" rel="noreferrer" className="text-primary dark:text-primary-dark hover:text-gray-300 hover:text-white rounded-md text-md font-medium mb-[4px]">
                     {React.createElement(icon)}
                   </a>
                 ))}
@@ -55,7 +55,7 @@ export default function Navbar() {
                   <Menu.Items className="absolute right-0 w-56 mt-2 z-10 p-2 bg-background-light dark:bg-background-dark rounded-md">
                     {SOCIAL_MEDIA.map(({href, icon, name}, idx) => (
                       <Menu.Item key={idx}>
-                        <a href={href} target="_blank" className="text-primary flex dark:text-primary-dark hover:text-gray-500 dark:hover:text-gray-400 rounded-md text-md font-medium">
+                        <a href={href} target="_blank" rel="noreferrer" className="text-primary flex dark:text-primary-dark hover:text-gray-500 dark:hover:text-gray-400 rounded-md text-md font-medium">
                           <span className="ml-1.5 my-auto">
                             {React.createElement(icon)}
                           </span>

@@ -76,6 +76,7 @@ export const Link: React.FC<{href: string, target?: string}> = (props) => {
   return (
     <a href={href}
       target={target ?? "_blank"}
+      rel="noreferrer"
       className={cls}>
       {children}
     </a>
