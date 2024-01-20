@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import Image from 'next/image';
+import Script from 'next/script'
 import { getMDXComponent } from 'mdx-bundler/client';
 
 
@@ -35,9 +36,9 @@ export default function BlogPost({code, frontmatter}: MarkdownPost) {
 
       <Head>
         <title>JSTNCNO Dev Blog{frontmatter.title ? ` - ${frontmatter.title}` : ''}</title>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.26.0/prism.min.js" integrity="sha512-pSVqGtpGygQlhN8ZTHXx1kqkjQr30eM+S6OoSzhHGTjh6DKdfy7WZlo1DNO9bhtM0Imf6xNLznZ7iVC2YUMwJQ==" crossOrigin="anonymous" referrerPolicy="no-referrer"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.26.0/components/prism-core.min.js" integrity="sha512-NC2WFBzw/SdbWrzG0C+sg3iv1OITcQKsUitDcYKfOp9vxe92zpNlRc5Ad3q81kAp8Ff/fDV8pZQxdCCeyFdgLw==" crossOrigin="anonymous" referrerPolicy="no-referrer"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.26.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-GP4x8UWxWyh4BMbyJGOGneiTbkrWEF5izsVJByzVLodP8CuJH/n936+yQDMJJrOPUHLgyPbLiGw2rXmdvGdXHA==" crossOrigin="anonymous" referrerPolicy="no-referrer"></script>
+        <Script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.26.0/prism.min.js" integrity="sha512-pSVqGtpGygQlhN8ZTHXx1kqkjQr30eM+S6OoSzhHGTjh6DKdfy7WZlo1DNO9bhtM0Imf6xNLznZ7iVC2YUMwJQ==" crossOrigin="anonymous" referrerPolicy="no-referrer" />
+        <Script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.26.0/components/prism-core.min.js" integrity="sha512-NC2WFBzw/SdbWrzG0C+sg3iv1OITcQKsUitDcYKfOp9vxe92zpNlRc5Ad3q81kAp8Ff/fDV8pZQxdCCeyFdgLw==" crossOrigin="anonymous" referrerPolicy="no-referrer" />
+        <Script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.26.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-GP4x8UWxWyh4BMbyJGOGneiTbkrWEF5izsVJByzVLodP8CuJH/n936+yQDMJJrOPUHLgyPbLiGw2rXmdvGdXHA==" crossOrigin="anonymous" referrerPolicy="no-referrer" />
         <meta name="description" content={frontmatter.excerpt} />
       </Head>
 
@@ -45,7 +46,9 @@ export default function BlogPost({code, frontmatter}: MarkdownPost) {
         <TitleLink href="#">{frontmatter.title}</TitleLink>
         <div className="flex my-7">
           {frontmatter.author?.picture &&
-            <Image src={frontmatter.author.picture} width={48} height={48} />
+            <Image src={frontmatter.author.picture}
+              alt="Profile picture"
+              width={48} height={48} />
           }
           <span className="ml-5">
             <PublishDate date={new Date(frontmatter.publishDate)} />

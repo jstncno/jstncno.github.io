@@ -25,9 +25,10 @@ export default function SplashPage() {
   }
 
   const backgroundPhoto = photo &&
-    <Image src={photo.urls.full} layout="fill"
+    <Image src={photo.urls.full}
+      alt={photo.alt_description ?? 'Cover photo from Unsplash'}
+      layout="fill"
       objectFit="cover"
-      width={photo.width} height={photo.height}
       onLoadingComplete={initialize} />;
 
   const photoCredits = photo &&
