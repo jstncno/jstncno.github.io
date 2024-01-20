@@ -9,10 +9,10 @@ export default function Logo(): JSX.Element {
   const {theme} = useTheme();
   const logo = theme === 'dark' ? logoDark : logoLight;
   return (
-    <Link href="/">
-      <a>
-        <Image src={logo} alt="jstncno.dev" width={96} height={54} />
-      </a>
-    </Link>
+    (<Link href="/">
+
+      <Image src={logo} alt="jstncno.dev" width={96} height={54} />
+
+    </Link>)
   );
 }

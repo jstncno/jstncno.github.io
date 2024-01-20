@@ -47,8 +47,8 @@ export const P: React.FC = ({children}) => {
 
 export const TitleLink: React.FC<{href: string}> = ({children, href}) => {
   return (
-    <NextLink href={href}>
-      <a className="hover:underline"><H1>{children}</H1></a>
+    <NextLink href={href} className="hover:underline">
+      <H1>{children}</H1>
     </NextLink>
   );
 };

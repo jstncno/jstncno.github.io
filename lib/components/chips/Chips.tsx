@@ -22,16 +22,19 @@ const Chips: React.FC<ChipsProps> = props => {
     <div className="flex flex-row flex-wrap whitespace-nowrap my-2">
       {tags && !!tags.length && Array.from(new Set(tags)).map((tag, idx) => (
         <div className="bg-chip text-xs text-primary-dark px-3 py-1 rounded-3xl my-1 mr-1" key={idx}>
-          <NextLink  href={getHref(tag)}>
-            <a className="flex" onClick={() => onClick && onClick(tag)}>
-              {iconLeft && React.createElement(iconLeft, {
-                className: 'block h-4 w-4 mr-1 -ml-1',
-              })}
-              {tag}
-              {iconRight && React.createElement(iconRight, {
-                className: 'block h-4 w-4 ml-1 -mr-1',
-              })}
-            </a>
+          <NextLink
+            href={getHref(tag)}
+            className="flex"
+            onClick={() => onClick && onClick(tag)}>
+
+            {iconLeft && React.createElement(iconLeft, {
+              className: 'block h-4 w-4 mr-1 -ml-1',
+            })}
+            {tag}
+            {iconRight && React.createElement(iconRight, {
+              className: 'block h-4 w-4 ml-1 -mr-1',
+            })}
+
           </NextLink>
         </div>
       ))}

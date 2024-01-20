@@ -8,7 +8,6 @@ import Article from '@jstncno/lib/layouts/Article';
 import Chips from '@jstncno/lib/components/chips/Chips';
 import { Callout, Code, H1, H2, H3, Link, ListItem, OrderedList, P, Pre, PublishDate, UnorderedList, TitleLink, HorizontalRule } from '@jstncno/lib/components/typography';
 import { getAllPosts, getPost, MarkdownPost } from '@jstncno/lib/utils';
-import Head from 'next/head';
 
 declare namespace Prism {
   function highlightAll(): void;
@@ -34,13 +33,13 @@ export default function BlogPost({code, frontmatter}: MarkdownPost) {
   return (
     <Article>
 
-      <Head>
+      <>
         <title>JSTNCNO Dev Blog{frontmatter.title ? ` - ${frontmatter.title}` : ''}</title>
         <Script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.26.0/prism.min.js" integrity="sha512-pSVqGtpGygQlhN8ZTHXx1kqkjQr30eM+S6OoSzhHGTjh6DKdfy7WZlo1DNO9bhtM0Imf6xNLznZ7iVC2YUMwJQ==" crossOrigin="anonymous" referrerPolicy="no-referrer" />
         <Script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.26.0/components/prism-core.min.js" integrity="sha512-NC2WFBzw/SdbWrzG0C+sg3iv1OITcQKsUitDcYKfOp9vxe92zpNlRc5Ad3q81kAp8Ff/fDV8pZQxdCCeyFdgLw==" crossOrigin="anonymous" referrerPolicy="no-referrer" />
         <Script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.26.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-GP4x8UWxWyh4BMbyJGOGneiTbkrWEF5izsVJByzVLodP8CuJH/n936+yQDMJJrOPUHLgyPbLiGw2rXmdvGdXHA==" crossOrigin="anonymous" referrerPolicy="no-referrer" />
         <meta name="description" content={frontmatter.excerpt} />
-      </Head>
+      </>
 
       <header>
         <TitleLink href="#">{frontmatter.title}</TitleLink>
