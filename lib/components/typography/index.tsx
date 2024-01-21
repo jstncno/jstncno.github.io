@@ -5,7 +5,7 @@ import styles from './styles.module.scss';
 import Callout from './Callout';
 import HorizontalRule from './HorizontalRule';
 
-export const Hero: React.FC = ({children}) => {
+export const Hero: React.FC<React.PropsWithChildren> = ({children}) => {
   return (
     <h1 className={styles.hero + " font-mono text-primary dark:text-primary-dark font-bold leading-tight xl:leading-loose mb-3 md:mb-0"}>
       {children}
@@ -13,7 +13,7 @@ export const Hero: React.FC = ({children}) => {
   );
 };
 
-export const H1: React.FC = ({children}) => {
+export const H1: React.FC<React.PropsWithChildren> = ({children}) => {
   return (
     <h1 className="font-mono text-primary dark:text-primary-dark text-5xl font-bold">
       {children}
@@ -21,7 +21,7 @@ export const H1: React.FC = ({children}) => {
   );
 };
 
-export const H2: React.FC = ({children}) => {
+export const H2: React.FC<React.PropsWithChildren> = ({children}) => {
   return (
     <h2 className="h2 text-secondary dark:text-secondary-dark text-4xl font-semibold mt-7 mb-3">
       {children}
@@ -29,7 +29,7 @@ export const H2: React.FC = ({children}) => {
   );
 };
 
-export const H3: React.FC = ({children}) => {
+export const H3: React.FC<React.PropsWithChildren> = ({children}) => {
   return (
     <h3 className="h3 text-tertiary dark:text-tertiary-dark text-xl font-bold mt-7 mb-3">
       {children}
@@ -37,7 +37,7 @@ export const H3: React.FC = ({children}) => {
   );
 };
 
-export const P: React.FC = ({children}) => {
+export const P: React.FC<React.PropsWithChildren> = ({children}) => {
   return (
     <p className="font-sans mb-5 text-primary dark:text-primary-dark md:pr-5">
       {children}
@@ -45,7 +45,7 @@ export const P: React.FC = ({children}) => {
   );
 };
 
-export const TitleLink: React.FC<{href: string}> = ({children, href}) => {
+export const TitleLink: React.FC<React.PropsWithChildren<{href: string}>> = ({children, href}) => {
   return (
     <NextLink href={href} className="hover:underline">
       <H1>{children}</H1>
@@ -53,7 +53,7 @@ export const TitleLink: React.FC<{href: string}> = ({children, href}) => {
   );
 };
 
-export const PublishDate: React.FC<{date: Date}> = ({date}) => {
+export const PublishDate: React.FC<React.PropsWithChildren<{date: Date}>> = ({date}) => {
   const dateStr = date.toLocaleDateString(undefined, {
     month: 'short',
     day: 'numeric',
@@ -66,7 +66,7 @@ export const PublishDate: React.FC<{date: Date}> = ({date}) => {
   );
 };
 
-export const Link: React.FC<{href: string, target?: string}> = (props) => {
+export const Link: React.FC<React.PropsWithChildren<{href: string, target?: string}>> = (props) => {
   const {children, href, target} = props;
   const color = 'text-primary dark:text-primary-dark';
   const hover = 'hover:text-secondary dark:hover:text-secondary-dark';
@@ -83,13 +83,13 @@ export const Link: React.FC<{href: string, target?: string}> = (props) => {
   );
 };
 
-export const Pre: React.FC = props => {
+export const Pre: React.FC<React.PropsWithChildren> = props => {
   return (
     <pre className="rounded-md bg-code-background-light dark:bg-code-background-dark p-5 overflow-x-auto" {...props} />
   );
 };
 
-export const Code: React.FC = ({children, ...props}) => {
+export const Code: React.FC<React.PropsWithChildren> = ({children, ...props}) => {
   return (
     <code className="font-mono text-primary dark:text-primary-dark bg-code-background-light dark:bg-code-background-dark rounded-md mb-3 md:mb-0 p-1 overflow-x-auto" {...props}>
       {children}
@@ -97,7 +97,7 @@ export const Code: React.FC = ({children, ...props}) => {
   );
 };
 
-export const OrderedList: React.FC = ({children, ...props}) => {
+export const OrderedList: React.FC<React.PropsWithChildren> = ({children, ...props}) => {
   return (
     <ol className="list-decimal ml-8" {...props}>
       {children}
@@ -105,7 +105,7 @@ export const OrderedList: React.FC = ({children, ...props}) => {
   );
 };
 
-export const UnorderedList: React.FC = ({children, ...props}) => {
+export const UnorderedList: React.FC<React.PropsWithChildren> = ({children, ...props}) => {
   return (
     <ol className="list-disc ml-8" {...props}>
       {children}
@@ -113,7 +113,7 @@ export const UnorderedList: React.FC = ({children, ...props}) => {
   );
 };
 
-export const ListItem: React.FC = ({children, ...props}) => {
+export const ListItem: React.FC<React.PropsWithChildren> = ({children, ...props}) => {
   return (
     <li className="last:mb-4" {...props}>
       {children}
