@@ -35,8 +35,9 @@ async function main() {
 
   console.log(`Publishing: ${pid}`);
 
-  const md = getPostMarkdown(pid);
-  const bundle = await bundleMDX(md, {
+  const source = getPostMarkdown(pid);
+  const bundle = await bundleMDX({
+    source,
     cwd: process.cwd(),
     esbuildOptions: options => ({
       ...options,

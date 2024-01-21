@@ -9,7 +9,7 @@ export default function Logo(): JSX.Element {
   const {theme} = useTheme();
   const logo = theme === 'dark' ? logoDark : logoLight;
   return (
-    (<Link href="/">
+    (<Link href="/" passHref>
 
       <Image src={logo} alt="jstncno.dev" width={96} height={54} />
 
