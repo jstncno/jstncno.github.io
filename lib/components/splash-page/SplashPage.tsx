@@ -50,9 +50,9 @@ export default function SplashPage() {
       <div className={styles.hello}>Hi there.</div>
       <div className={styles.greeting}>
         Welcome to my site! My name is Justin, and I
-        currently work as an Technical Lead on the
-        Experience Studio Team @ <a href="https://www.google.com/">Google</a>,
-        developing software systems for Google Experience Centers.
+        currently work as a Platform Lead on the
+        Experience Labs Team @ <a href="https://www.google.com/">Google</a>,
+        developing software systems for Google Event Spaces and Experience Centers.
         <SocialButtons />
       </div>
       {photoCredits}
